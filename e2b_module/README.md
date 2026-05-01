@@ -4,7 +4,7 @@
 
 Стандарт: **ICH E2B(R3)** — Individual Case Safety Report (ICSR)  
 Лицензия: **GNU GPL v3**  
-Версия: **1.0.0**
+Версия: **1.1.0**
 
 ---
 
@@ -17,6 +17,8 @@
 | XML (E2B R3) | **JSON** | Структурированные данные для API и обработки |
 | XML (E2B R3) | **HTML** | Читаемый медицинский отчёт для просмотра в браузере |
 | XML (E2B R3) | **SQL** | Готовые INSERT-запросы для загрузки в базу данных |
+| XML (E2B R3) | **CIOMS** | Заполненная форма CIOMS I в формате HTML |
+| XML (E2B R3) | **Вложения** | Двоичные файлы вложений (base64 → файлы) |
 | JSON | **XML** | Обратная конвертация (round-trip) |
 
 ### Поддерживаемые форматы XML
@@ -60,6 +62,15 @@ python e2b_converter.py examples/test_report.xml --format json --include-empty -
 
 # SQL без CREATE TABLE (только INSERT)
 python e2b_converter.py examples/test_report.xml --format sql --no-ddl -o inserts_only.sql
+
+# XML → форма CIOMS I (HTML)
+python e2b_converter.py examples/example_hl7_standard.xml --format cioms -o cioms_form.html
+
+# Извлечение вложений (base64 → файлы в папку)
+python e2b_converter.py examples/example_hl7_standard.xml --attach ./attachments/
+
+# Комбинирование: JSON + вложения за один запуск
+python e2b_converter.py examples/example_hl7_standard.xml --format json -o result.json --attach ./attachments/
 ```
 
 ### Использование как Python-модуль
@@ -86,6 +97,14 @@ xml_again = E2BConverter.json_to_xml(json_str)
 
 # Универсальный метод: читает файл и конвертирует
 E2BConverter.convert_file('examples/test_report.xml', 'html', 'output.html')
+
+# Форма CIOMS I
+cioms_html = E2BConverter.xml_to_cioms(xml)
+E2BConverter.save_as_cioms(xml, 'cioms_form.html')
+
+# Извлечение вложений (возвращает список путей сохранённых файлов)
+saved_files = E2BConverter.extract_attachments(xml, './attachments/')
+print(saved_files)  # ['/.../attachments/JP-DSJP_lab_result.pdf', ...]
 ```
 
 ### Использование в Django-проекте (E2B4Free)
@@ -114,6 +133,12 @@ class ExportSqlView(AuthView):
         xml = get_xml_for_icsr(pk)
         sql = E2BConverter.xml_to_sql(xml, dialect='postgresql')
         return HttpResponse(sql, content_type='text/plain')
+
+class ExportCiomsView(AuthView):
+    def get(self, request, pk):
+        xml = get_xml_for_icsr(pk)
+        cioms = E2BConverter.xml_to_cioms(xml)
+        return HttpResponse(cioms, content_type='text/html')
 ```
 
 ---
@@ -199,6 +224,33 @@ sqlite3 icsr_database.db "SELECT product_name, drug_role FROM g_drugs;"
 sqlite3 icsr_database.db "SELECT reaction_translation, outcome FROM e_reactions;"
 ```
 
+### CIOMS I
+
+Стандартная международная форма «Suspect Adverse Reaction Report» в формате HTML. Форма заполняется данными из ICSR по маппингу ICH E2B(R3) → CIOMS I:
+
+| Поле CIOMS | Источник E2B R3 |
+|------------|----------------|
+| 1. Patient initials | `d_1_patient` |
+| 2–3. Age / Date of birth | `d_2_1_date_birth`, `d_3_age` |
+| 4. Sex | `d_5_sex` (1→Male, 2→Female) |
+| 5–7. Reaction onset / duration | `e_i_4_date_start_reaction`, `e_i_5_date_end_reaction` |
+| 8–13. Seriousness | `e_i_3_1_*` (смерть, угроза жизни, госпитализация…) |
+| 14–19. Suspect drug(s) | `g_k_*` где `g_k_1_characterisation_drug_role = 1` |
+| 20–22. Concomitant drugs | `g_k_*` где роль ≠ 1 |
+| 23. Narrative | `h_1_case_narrative` |
+| 24a. Reporter | `c_3_*` (sender info) |
+
+Форма сохраняется как самодостаточный HTML-файл — CSS встроен, внешних зависимостей нет.
+
+### Вложения (ED-поля, F.r.3.4)
+
+Поле `F.r.3.4` стандарта E2B R3 имеет тип ED (Encapsulated Data) и может содержать base64-закодированные двоичные данные (PDF, изображения, ZIP-архивы). Модуль извлекает все такие поля и сохраняет как отдельные файлы:
+
+- Имя файла: `<report_id>_<test_name>.<ext>` (расширение определяется по атрибуту `mediaType`)
+- Поддерживаемые MIME-типы: `application/pdf`, `image/jpeg`, `image/png`, `image/gif`, `application/zip`, `text/plain`, `text/html`, `application/xml`
+- Неизвестный `mediaType` → расширение `.bin`
+- Метод возвращает список абсолютных путей к сохранённым файлам
+
 ---
 
 ## Структура стандарта E2B R3
@@ -227,12 +279,16 @@ E2BConverter
 ├── xml_to_json(xml, indent=2, include_empty=False) → str
 ├── xml_to_html(xml)                                → str
 ├── xml_to_sql(xml, dialect='sqlite', include_ddl=True) → str
+├── xml_to_cioms(xml)                               → str
 ├── json_to_xml(json_string)                        → str
 ├── xml_to_dict(xml)                                → dict
 │
 ├── save_as_json(xml, path, ...)
 ├── save_as_html(xml, path)
 ├── save_as_sql(xml, path, ...)
+├── save_as_cioms(xml, path)
+│
+├── extract_attachments(xml, output_dir)            → List[str]
 │
 ├── load_xml_file(path)  → dict
 ├── load_json_file(path) → dict
@@ -242,13 +298,15 @@ E2BConverter
 ### Параметры командной строки
 
 ```
-python e2b_converter.py <input> --format <fmt> [опции]
+python e2b_converter.py <input> [--format <fmt>] [--attach <dir>] [опции]
 
 Аргументы:
   input               Путь к файлу (.xml или .json)
 
-Обязательные:
-  -f, --format        json | html | sql | xml
+Основные:
+  -f, --format        json | html | sql | xml | cioms
+                      (необязателен, если указан --attach)
+  --attach DIR        Извлечь base64-вложения (F.r.3.4) в папку DIR
 
 Опциональные:
   -o, --output        Путь к выходному файлу (по умолчанию — stdout)
@@ -257,6 +315,8 @@ python e2b_converter.py <input> --format <fmt> [опции]
   --no-ddl            Не добавлять CREATE TABLE в SQL
   --version           Показать версию
 ```
+
+> `--attach` и `--format` можно использовать одновременно: вложения будут извлечены, а конвертация в указанный формат также будет выполнена.
 
 ---
 
@@ -277,6 +337,12 @@ python e2b_converter.py examples/test_report.xml --format sql
 python e2b_converter.py examples/example_hl7_standard.xml --format sql -o test.db.sql
 sqlite3 test.db < test.db.sql
 sqlite3 test.db "SELECT sender_safety_report_unique_id, type_report FROM c1_identification;"
+
+# 5. Форма CIOMS I
+python e2b_converter.py examples/example_hl7_standard.xml --format cioms -o cioms_form.html
+
+# 6. Извлечение вложений
+python e2b_converter.py examples/example_hl7_standard.xml --attach ./attachments/
 ```
 
 ---

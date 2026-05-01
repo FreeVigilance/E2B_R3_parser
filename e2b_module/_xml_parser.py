@@ -371,6 +371,9 @@ def _parse_hl7_xml(root: ET.Element) -> Dict[str, Any]:
                             elif 'ED' in tp_f:
                                 f_entry['f_r_3_4_result_unstructured_data'] = (
                                     val_f.text.strip() if val_f.text else '')
+                                mt = val_f.get('mediaType', '')
+                                if mt:
+                                    f_entry['f_r_3_4_result_media_type'] = mt
                         rr = obs_f.find(
                             f'.//{_hl7("referenceRange")}/{_hl7("observationRange")}')
                         if rr is not None:

@@ -8,6 +8,7 @@ E2B R3 ICSR Import/Export Module
     XML (E2B R3) → JSON
     XML (E2B R3) → HTML
     XML (E2B R3) → SQL
+    XML (E2B R3) → CIOMS (форма CIOMS I)
     JSON          → XML (E2B R3)
 
 Использование:
@@ -16,16 +17,17 @@ E2B R3 ICSR Import/Export Module
     with open('report.xml', encoding='utf-8') as f:
         xml_data = f.read()
 
-    json_out = E2BConverter.xml_to_json(xml_data)
-    html_out = E2BConverter.xml_to_html(xml_data)
-    sql_out  = E2BConverter.xml_to_sql(xml_data)
+    json_out  = E2BConverter.xml_to_json(xml_data)
+    html_out  = E2BConverter.xml_to_html(xml_data)
+    sql_out   = E2BConverter.xml_to_sql(xml_data)
+    cioms_out = E2BConverter.xml_to_cioms(xml_data)
 
 Стандарт: ICH E2B(R3)
 Лицензия: GNU GPL v3
 """
 
 import json
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 from _constants import __version__, __author__, __license__
 from _xml_parser import _parse_xml
@@ -33,6 +35,8 @@ from _json_converter import _to_json
 from _html_converter import _to_html
 from _sql_converter import _to_sql
 from _xml_generator import _to_xml
+from _cioms_converter import _to_cioms
+from _attachments import extract_attachments as _extract_attachments
 
 
 class E2BConverter:
@@ -43,10 +47,14 @@ class E2BConverter:
         XML  → JSON  (xml_to_json)
         XML  → HTML  (xml_to_html)
         XML  → SQL   (xml_to_sql)
+        XML  → CIOMS (xml_to_cioms)
         JSON → XML   (json_to_xml)
 
+    Attachment extraction:
+        extract_attachments(xml_string, output_dir)
+
     File helpers:
-        save_as_json, save_as_html, save_as_sql
+        save_as_json, save_as_html, save_as_sql, save_as_cioms
         load_xml_file, load_json_file
     """
 
@@ -105,6 +113,35 @@ class E2BConverter:
         return _to_sql(data, root_tag, dialect=dialect, include_ddl=include_ddl)
 
     @staticmethod
+    def xml_to_cioms(xml_string: str) -> str:
+        """
+        Convert E2B R3 XML to a printable CIOMS I form (HTML).
+
+        Args:
+            xml_string: Raw XML text.
+
+        Returns:
+            Standalone HTML document with the filled CIOMS form.
+        """
+        root_tag, data = _parse_xml(xml_string)
+        return _to_cioms(data, root_tag)
+
+    @staticmethod
+    def extract_attachments(xml_string: str, output_dir: str) -> List[str]:
+        """
+        Decode and save all base64-encoded ED attachments from F.r.3.4 fields.
+
+        Args:
+            xml_string: Raw XML text.
+            output_dir: Directory where decoded files will be written.
+
+        Returns:
+            List of absolute paths of the files that were written.
+        """
+        _, data = _parse_xml(xml_string)
+        return _extract_attachments(data, output_dir)
+
+    @staticmethod
     def json_to_xml(json_string: str) -> str:
         """
         Convert a JSON string (previously exported by xml_to_json) back to
@@ -160,6 +197,13 @@ class E2BConverter:
             f.write(result)
 
     @staticmethod
+    def save_as_cioms(xml_string: str, output_path: str) -> None:
+        """Convert XML and write CIOMS form HTML to *output_path*."""
+        result = E2BConverter.xml_to_cioms(xml_string)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(result)
+
+    @staticmethod
     def convert_file(input_path: str, output_format: str,
                      output_path: Optional[str] = None, **kwargs) -> str:
         """
@@ -167,7 +211,7 @@ class E2BConverter:
 
         Args:
             input_path:    Path to source file (.xml or .json).
-            output_format: One of 'json', 'html', 'sql', 'xml'.
+            output_format: One of 'json', 'html', 'sql', 'cioms', 'xml'.
             output_path:   If given, write result to this file as well.
             **kwargs:      Forwarded to the specific converter.
 
@@ -188,6 +232,8 @@ class E2BConverter:
                 result = E2BConverter.xml_to_html(content)
             elif fmt == 'sql':
                 result = E2BConverter.xml_to_sql(content, **kwargs)
+            elif fmt == 'cioms':
+                result = E2BConverter.xml_to_cioms(content)
             else:
                 raise ValueError(f'Unknown output format: {output_format}')
         else:
@@ -216,9 +262,19 @@ def xml_to_sql(xml_string: str, dialect: str = 'sqlite') -> str:
     return E2BConverter.xml_to_sql(xml_string, dialect=dialect)
 
 
+def xml_to_cioms(xml_string: str) -> str:
+    """Convert E2B R3 XML to CIOMS I form HTML."""
+    return E2BConverter.xml_to_cioms(xml_string)
+
+
 def json_to_xml(json_string: str) -> str:
     """Convert JSON (from xml_to_json) back to E2B R3 XML."""
     return E2BConverter.json_to_xml(json_string)
+
+
+def extract_attachments(xml_string: str, output_dir: str) -> List[str]:
+    """Decode and save ED attachments from F.r.3.4 fields."""
+    return E2BConverter.extract_attachments(xml_string, output_dir)
 
 
 def _cli_main() -> None:
@@ -228,20 +284,22 @@ def _cli_main() -> None:
 
     parser = argparse.ArgumentParser(
         prog='e2b_converter',
-        description='E2B R3 ICSR Import/Export Tool — converts XML ↔ JSON/HTML/SQL',
+        description='E2B R3 ICSR Import/Export Tool — converts XML ↔ JSON/HTML/SQL/CIOMS',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python e2b_converter.py report.xml --format json -o report.json
-  python e2b_converter.py report.xml --format html -o report.html
-  python e2b_converter.py report.xml --format sql  -o report.sql
-  python e2b_converter.py report.xml --format sql  --dialect postgresql -o report.sql
-  python e2b_converter.py report.json --format xml -o report_out.xml
+  python e2b_converter.py report.xml --format json  -o report.json
+  python e2b_converter.py report.xml --format html  -o report.html
+  python e2b_converter.py report.xml --format sql   -o report.sql
+  python e2b_converter.py report.xml --format cioms -o cioms.html
+  python e2b_converter.py report.xml --format sql   --dialect postgresql -o report.sql
+  python e2b_converter.py report.json --format xml  -o report_out.xml
+  python e2b_converter.py report.xml --attach ./attachments/
         """
     )
     parser.add_argument('input', help='Input file path (.xml or .json)')
-    parser.add_argument('-f', '--format', required=True,
-                        choices=['json', 'html', 'sql', 'xml'],
+    parser.add_argument('-f', '--format', default=None,
+                        choices=['json', 'html', 'sql', 'cioms', 'xml'],
                         help='Output format')
     parser.add_argument('-o', '--output', default=None,
                         help='Output file path (stdout if omitted)')
@@ -252,6 +310,8 @@ Examples:
                         help='Include empty/null fields in JSON output')
     parser.add_argument('--no-ddl', action='store_true',
                         help='Omit CREATE TABLE statements from SQL output')
+    parser.add_argument('--attach', metavar='DIR', default=None,
+                        help='Decode and save ED attachments (F.r.3.4) to DIR')
     parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
 
     args = parser.parse_args()
@@ -263,6 +323,26 @@ Examples:
     with open(args.input, encoding='utf-8') as f:
         content = f.read()
 
+    # Handle --attach (independent of --format)
+    if args.attach:
+        try:
+            saved = E2BConverter.extract_attachments(content, args.attach)
+            if saved:
+                print(f'Extracted {len(saved)} attachment(s):')
+                for p in saved:
+                    print(f'  {p}')
+            else:
+                print('No attachments found in this report.')
+        except Exception as exc:
+            print(f'Attachment extraction error: {exc}', file=sys.stderr)
+            sys.exit(2)
+        if not args.format:
+            return
+
+    if not args.format:
+        print('Error: --format is required (unless using --attach only)', file=sys.stderr)
+        sys.exit(1)
+
     ext = args.input.rsplit('.', 1)[-1].lower()
 
     try:
@@ -273,6 +353,8 @@ Examples:
         elif args.format == 'sql':
             result = E2BConverter.xml_to_sql(content, dialect=args.dialect,
                                              include_ddl=not args.no_ddl)
+        elif args.format == 'cioms':
+            result = E2BConverter.xml_to_cioms(content)
         elif args.format == 'xml':
             if ext != 'json':
                 print('Error: --format xml expects a JSON input file', file=sys.stderr)

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CIOMS Form</title>
+<style>
+  @page { size: A4; margin: 10mm; }
+  @media print { .no-print { display: none; } body { margin: 0; } }
+  * { font-family: sans-serif; font-size: 10px; box-sizing: border-box; }
+  body { max-width: 190mm; margin: 0 auto; padding: 4mm; }
+  h1, h2 { font-size: 13px; text-align: center; margin: 2px 0; }
+  h3 { font-size: 11px; margin: 4px 0 2px; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 4px; }
+  th, td { border: 0.3px solid #888; padding: 2px 4px; vertical-align: top; }
+  th { background: #f0f0f0; text-align: left; font-weight: bold; }
+  .label { color: #444; font-size: 9px; display: block; margin-bottom: 1px; }
+  .field { background: #f8f8ff; border: 0.3px solid #ccc; padding: 2px 4px;
+            width: 100%; min-height: 16px; }
+  .section { border: 0.5px solid #555; margin-bottom: 4px; padding: 3px 5px; }
+  .row { display: flex; gap: 6px; margin-bottom: 3px; flex-wrap: wrap; }
+  .col { flex: 1; min-width: 60px; }
+  .col-2 { flex: 2; }
+  .col-3 { flex: 3; }
+  .col-4 { flex: 4; }
+  .col-6 { flex: 6; }
+  textarea { width: 100%; border: 0.3px solid #ccc; background: #f8f8ff;
+              resize: none; padding: 2px 4px; }
+  input[type=text] { width: 100%; border: 0.3px solid #ccc; background: #f8f8ff;
+                      padding: 2px 4px; }
+  .btn { display: flex; justify-content: center; margin: 8px; }
+  button { padding: 4px 20px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h1>CIOMS FORM</h1>
+<h2>SUSPECT ADVERSE REACTION REPORT</h2>
+
+<!-- I. Reaction Information -->
+<div class="section">
+  <h3>I. REACTION INFORMATION</h3>
+  <div class="row">
+    <div class="col col-2">
+      <span class="label">1. PATIENT INITIALS (first, last)</span>
+      <input type="text" value="T.O." readonly>
+    </div>
+    <div class="col">
+      <span class="label">1a. COUNTRY</span>
+      <input type="text" value="JP" readonly>
+    </div>
+    <div class="col col-2">
+      <span class="label">2. DATE OF BIRTH (Day / Month / Year)</span>
+      <div style="display:flex;gap:4px;">
+        <input type="text" value="12" readonly style="width:33%">
+        <input type="text" value="04" readonly style="width:33%">
+        <input type="text" value="1926" readonly style="width:34%">
+      </div>
+    </div>
+    <div class="col">
+      <span class="label">2a. AGE</span>
+      <input type="text" value="81 a" readonly>
+    </div>
+    <div class="col">
+      <span class="label">3. SEX</span>
+      <select disabled>
+        <option value="F" selected>F</option>
+        <option value="M">M</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-2">
+      <span class="label">4–6. REACTION ONSET (Day / Month / Year)</span>
+      <div style="display:flex;gap:4px;">
+        <input type="text" value="09" readonly style="width:33%">
+        <input type="text" value="10" readonly style="width:33%">
+        <input type="text" value="2008" readonly style="width:34%">
+      </div>
+    </div>
+    <div class="col col-6">
+      <span class="label">8–12. CHECK ALL APPROPRIATE TO ADVERSE REACTION</span>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:2px;">
+        <label><input type="checkbox" disabled> PATIENT DIED</label>
+        <label><input type="checkbox" disabled> PROLONGED HOSPITALISATION</label>
+        <label><input type="checkbox" disabled> DISABILITY/INCAPACITY</label>
+        <label><input type="checkbox" disabled> LIFE THREATENING</label>
+        <label><input type="checkbox" disabled> OTHER</label>
+      </div>
+    </div>
+  </div>
+  <div>
+    <span class="label">7 + 13. DESCRIBE REACTION(S) (including relevant tests/lab data)</span>
+    <textarea rows="6" readonly>間質性肺炎
+An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization).</textarea>
+  </div>
+</div>
+
+<!-- II. Suspect Drug(s) -->
+<div class="section">
+  <h3>II. SUSPECT DRUG(S) INFORMATION</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>14. Drug (generic name)</th>
+        <th>15. Daily dose</th>
+        <th>16. Route</th>
+        <th>18. Therapy dates (from/to)</th>
+        <th>19. Duration</th>
+        <th>17. Indication</th>
+        <th>20. Abate?</th>
+        <th>21. Reappear?</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>MEVALOTIN</td>
+          <td>20 mg</td>
+          <td>PER ORAL</td>
+          <td>200807/20081006</td>
+          <td></td>
+          <td>HYPERLIPIDAEMIA (10062060)</td>
+          <td></td>
+          <td></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- III. Concomitant Drugs and History -->
+<div class="section">
+  <h3>III. CONCOMITANT DRUG(S) AND HISTORY</h3>
+  <div>
+    <span class="label">22. CONCOMITANT DRUG(S) AND DATES OF ADMINISTRATION (exclude those used to treat reaction)</span>
+    <textarea rows="4" readonly></textarea>
+  </div>
+  <div>
+    <span class="label">23. OTHER RELEVANT HISTORY (diagnostics, allergies, pregnancy, etc.)</span>
+    <textarea rows="3" readonly>10020603</textarea>
+  </div>
+</div>
+
+<!-- IV. Manufacturer Information -->
+<div class="section">
+  <h3>IV. MANUFACTURER INFORMATION</h3>
+  <div class="row">
+    <div class="col col-3">
+      <span class="label">24a. NAME AND ADDRESS OF MANUFACTURER</span>
+      <textarea rows="4" readonly>Daiichi Sankyo Company, Limited
+Pharmacovigilance
+Hanako
+Yamada
+3-5-1 Nihonbashi Honcho
+Chuo-ku
+Tokyo
+103-8426
+JP</textarea>
+    </div>
+    <div class="col col-2">
+      <div>
+        <span class="label">24b. MFR CONTROL NO.</span>
+        <input type="text" value="JP-DSJP-DSJ-2009-98765-1" readonly>
+      </div>
+      <div style="margin-top:4px;">
+        <span class="label">24c. DATE RECEIVED BY MANUFACTURER</span>
+        <input type="text" value="20090622" readonly>
+      </div>
+    </div>
+    <div class="col col-2">
+      <span class="label">24d. REPORT SOURCE</span>
+      <div style="padding-top:2px;">
+        <label><input type="checkbox" checked disabled> STUDY</label><br>
+        <label><input type="checkbox" disabled> LITERATURE</label><br>
+        <label><input type="checkbox" checked disabled> HEALTH PROFESSIONAL</label>
+      </div>
+    </div>
+    <div class="col">
+      <div>
+        <span class="label">DATE OF THIS REPORT</span>
+        <input type="text" value="20100412" readonly>
+      </div>
+      <div style="margin-top:4px;">
+        <span class="label">25a. REPORT TYPE</span>
+        <div>
+          <label><input type="radio" name="rtype" value="initial"  checked disabled> INITIAL</label>
+          <label><input type="radio" name="rtype" value="followup" disabled> FOLLOW-UP</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="no-print btn">
+  <button onclick="window.print()">Save as PDF / Print</button>
+</div>
+</body>
+</html>
