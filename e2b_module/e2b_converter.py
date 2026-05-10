@@ -124,7 +124,7 @@ class E2BConverter:
             Standalone HTML document with the filled CIOMS form.
         """
         root_tag, data = _parse_xml(xml_string)
-        return _to_cioms(data, root_tag)
+        return _to_cioms(data)
 
     @staticmethod
     def extract_attachments(xml_string: str, output_dir: str) -> List[str]:
@@ -323,10 +323,22 @@ Examples:
     with open(args.input, encoding='utf-8') as f:
         content = f.read()
 
+    ext = args.input.rsplit('.', 1)[-1].lower()
+
+    # Parse once; reused by both --attach and --format to avoid double work
+    parsed: Optional[tuple] = None
+
+    def _get_parsed():
+        nonlocal parsed
+        if parsed is None:
+            parsed = _parse_xml(content)
+        return parsed
+
     # Handle --attach (independent of --format)
     if args.attach:
         try:
-            saved = E2BConverter.extract_attachments(content, args.attach)
+            _, data = _get_parsed()
+            saved = _extract_attachments(data, args.attach)
             if saved:
                 print(f'Extracted {len(saved)} attachment(s):')
                 for p in saved:
@@ -343,26 +355,26 @@ Examples:
         print('Error: --format is required (unless using --attach only)', file=sys.stderr)
         sys.exit(1)
 
-    ext = args.input.rsplit('.', 1)[-1].lower()
-
     try:
-        if args.format == 'json':
-            result = E2BConverter.xml_to_json(content, include_empty=args.include_empty)
-        elif args.format == 'html':
-            result = E2BConverter.xml_to_html(content)
-        elif args.format == 'sql':
-            result = E2BConverter.xml_to_sql(content, dialect=args.dialect,
-                                             include_ddl=not args.no_ddl)
-        elif args.format == 'cioms':
-            result = E2BConverter.xml_to_cioms(content)
-        elif args.format == 'xml':
+        if args.format == 'xml':
             if ext != 'json':
                 print('Error: --format xml expects a JSON input file', file=sys.stderr)
                 sys.exit(1)
             result = E2BConverter.json_to_xml(content)
         else:
-            print(f'Error: unknown format {args.format}', file=sys.stderr)
-            sys.exit(1)
+            root_tag, data = _get_parsed()
+            if args.format == 'json':
+                result = _to_json(data, root_tag, include_empty=args.include_empty)
+            elif args.format == 'html':
+                result = _to_html(data, root_tag)
+            elif args.format == 'sql':
+                result = _to_sql(data, root_tag, dialect=args.dialect,
+                                 include_ddl=not args.no_ddl)
+            elif args.format == 'cioms':
+                result = _to_cioms(data)
+            else:
+                print(f'Error: unknown format {args.format}', file=sys.stderr)
+                sys.exit(1)
     except Exception as exc:
         print(f'Conversion error: {exc}', file=sys.stderr)
         sys.exit(2)

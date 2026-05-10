@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CIOMS Form</title>
+</head>
+<body>
+
+<style>
+    @page {
+        size: A4;
+    }
+
+    @media print {
+        button {
+            display: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    html, body {
+        max-width: 190mm;
+        margin: 0 auto;
+    }
+
+    * {
+        font-family: sans-serif;
+        font-size: 10px;
+    }
+
+    h1, h2 {
+        font-size: 14px;
+    }
+
+    textarea {
+        resize: none;
+        height: 100%;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label, textarea, input[type="text"] {
+        padding: 2px 2px 2px 4px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        accent-color: black;
+        vertical-align: middle;
+        margin-top: -1px;
+    }
+
+    input:not(input[type="checkbox"], input[type="radio"]), select, textarea {
+        box-sizing: border-box;
+        width: 100%;
+        border: none;
+        background: #f8f8ff;
+    }
+
+    .layout {
+        display: grid;
+        grid:
+        "cioms_form cioms_form cioms_form cioms_form cioms_form cioms_form cioms_form cioms_form cioms_form cioms_form cioms_form" 1.6fr
+        "suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report dummy1 dummy1 dummy1 dummy1 dummy1" 1fr
+        "suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report dummy_text dummy_text dummy_text dummy_text dummy_text" 1fr
+        "suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report suspect_adverse_reaction_report dummy2 dummy2 dummy2 dummy3 dummy3" 1fr
+        "reaction reaction reaction reaction reaction reaction reaction reaction reaction reaction reaction" auto
+        "patient_initials patient_initials country country date_of_birth date_of_birth age sex reaction_onset reaction_onset severity" auto
+        "describe_reaction describe_reaction describe_reaction describe_reaction describe_reaction describe_reaction describe_reaction describe_reaction describe_reaction describe_reaction severity" auto
+        "suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug suspect_drug" auto
+        "suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name suspect_drug_1_name reaction_abate" auto
+        "suspect_drug_1_daily_dose suspect_drug_1_daily_dose suspect_drug_1_daily_dose suspect_drug_1_daily_dose suspect_drug_1_daily_dose suspect_drug_1_daily_dose suspect_drug_1_route suspect_drug_1_route suspect_drug_1_route suspect_drug_1_route reaction_abate" auto
+        "suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use suspect_drug_1_indication_for_use reaction_reappear" auto
+        "suspect_drug_1_therapy_dates suspect_drug_1_therapy_dates suspect_drug_1_therapy_dates suspect_drug_1_therapy_dates suspect_drug_1_therapy_dates suspect_drug_1_therapy_dates suspect_drug_1_therapy_duration suspect_drug_1_therapy_duration suspect_drug_1_therapy_duration suspect_drug_1_therapy_duration reaction_reappear" auto
+        "concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug concomitant_drug" auto
+        "concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration concomitant_drug_and_dates_of_administration" auto
+        "other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history other_relevant_history" auto
+        "manufacturer manufacturer manufacturer manufacturer manufacturer manufacturer manufacturer manufacturer manufacturer manufacturer manufacturer" auto
+        "name_and_address_of_manufacturer name_and_address_of_manufacturer name_and_address_of_manufacturer name_and_address_of_manufacturer name_and_address_of_manufacturer name_and_address_of_manufacturer text text text text text" auto
+        "text2 text2 text2 manufacturer_control_number manufacturer_control_number manufacturer_control_number text text text text text" auto
+        "date_received_by_manufacturer date_received_by_manufacturer date_received_by_manufacturer report_source report_source report_source text text text text text" auto
+        "date_of_report date_of_report date_of_report report_type report_type report_type text text text text text" auto
+        / 1.2fr 1fr 1fr 1fr 1fr 1.2fr 1fr 1fr 0.7fr 2fr 3fr;
+        page-break-after: always;
+    }
+
+    .cioms_form {
+        grid-area: cioms_form;
+        text-align: right;
+    }
+
+    .suspect_adverse_reaction_report {
+        grid-area: suspect_adverse_reaction_report;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .reaction { grid-area: reaction; }
+    .patient_initials { grid-area: patient_initials; }
+    .country { grid-area: country; }
+    .date_of_birth { grid-area: date_of_birth; }
+    .age { grid-area: age; }
+    .sex { grid-area: sex; }
+    .reaction_onset { grid-area: reaction_onset; }
+    .severity { grid-area: severity; }
+    .describe_reaction { grid-area: describe_reaction; }
+    .suspect_drug { grid-area: suspect_drug; }
+    .suspect_drug_1_name { grid-area: suspect_drug_1_name; }
+    .suspect_drug_1_daily_dose { grid-area: suspect_drug_1_daily_dose; }
+    .suspect_drug_1_route { grid-area: suspect_drug_1_route; }
+    .suspect_drug_1_indication_for_use { grid-area: suspect_drug_1_indication_for_use; }
+    .suspect_drug_1_therapy_dates { grid-area: suspect_drug_1_therapy_dates; }
+    .suspect_drug_1_therapy_duration { grid-area: suspect_drug_1_therapy_duration; }
+    .reaction_abate { grid-area: reaction_abate; }
+    .reaction_reappear { grid-area: reaction_reappear; }
+    .concomitant_drug { grid-area: concomitant_drug; }
+    .concomitant_drug_and_dates_of_administration { grid-area: concomitant_drug_and_dates_of_administration; }
+    .other_relevant_history { grid-area: other_relevant_history; }
+    .manufacturer { grid-area: manufacturer; }
+    .name_and_address_of_manufacturer { grid-area: name_and_address_of_manufacturer; }
+    .manufacturer_control_number { grid-area: manufacturer_control_number; }
+    .date_received_by_manufacturer { grid-area: date_received_by_manufacturer; }
+    .report_source { grid-area: report_source; }
+    .date_of_report { grid-area: date_of_report; }
+    .report_type { grid-area: report_type; }
+    .dummy1 { grid-area: dummy1; }
+    .dummy2 { grid-area: dummy2; }
+    .dummy3 { grid-area: dummy3; flex-direction: row; justify-content: space-evenly; }
+    .dummy_text { grid-area: dummy_text; }
+    .text { grid-area: text; }
+    .text2 { grid-area: text2; }
+
+    section > div {
+        border-left: 0.05mm solid rgba(0, 0, 0, 0.5);
+        border-top: 0.05mm solid rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+    }
+
+    section > div:not(.severity, .reaction_abate, .reaction_reappear, .report_source, .report_type,
+                      .dummy3, .suspect_adverse_reaction_report) {
+        justify-content: space-between;
+    }
+
+    .cioms_form, .reaction, .suspect_drug, .concomitant_drug, .manufacturer, .continue {
+        border: none;
+    }
+
+    label[for="date_of_birth"], label[for="reaction_onset"],
+    .suspect_adverse_reaction_report,
+    .describe_reaction, .severity, .suspect_drug_1_therapy_dates, .suspect_drug_1_therapy_duration, .reaction_reappear,
+    .other_relevant_history,
+    .date_of_report, .report_type,
+    .text, .dummy2, .dummy3 {
+        border-bottom: 0.05mm solid rgba(0, 0, 0, 0.5);
+    }
+
+    .date div:not(:last-child), th:not(:last-child), td:not(:last-child),
+    .cell, #suspect_drug_1_therapy_from,
+    .severity,
+    .reaction_abate, .reaction_reappear,
+    .concomitant_drug_and_dates_of_administration, .other_relevant_history,
+    .text, .dummy1, .dummy_text, .dummy3 {
+        border-right: 0.05mm solid rgba(0, 0, 0, 0.5);
+    }
+
+    div:has(input[type="radio"]) {
+        display: flex;
+    }
+
+    label:has(input[type="checkbox"]), label:has(input[type="radio"]) {
+        padding-left: 0;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    #suspect_drug_1_therapy_dates {
+        display: flex;
+    }
+
+    .date {
+        height: 100%;
+        display: flex;
+    }
+
+    .day, .month, .year {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #severity {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #report_source div {
+        display: flex;
+    }
+
+    .dummy_text input, .text2 input {
+        height: 100%;
+    }
+
+    tr {
+        border-top: 0.05mm solid rgba(0, 0, 0, 0.5);
+    }
+
+    table table tr:first-child {
+        border-top: none;
+    }
+
+    .layout_continue {
+        border-bottom: 0.05mm solid rgba(0, 0, 0, 0.5);
+    }
+
+    .button {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 20px;
+    }
+</style>
+
+<section class="layout">
+    <div class="cioms_form">
+        <h1>CIOMS FORM</h1>
+    </div>
+
+    <div class="suspect_adverse_reaction_report">
+        <h2>SUSPECT ADVERSE REACTION REPORT</h2>
+    </div>
+
+    <div class="dummy1"></div>
+    <div class="dummy_text"><input type="text"></div>
+    <div class="dummy2"></div>
+    <div class="dummy3">
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+
+    <div class="reaction"><h2>I. REACTION INFORMATION</h2></div>
+
+    <div class="patient_initials">
+        <label for="patient_initials">1. PATIENT INITIALS (first, last)</label>
+        <input type="text" id="patient_initials" value="T.O." readonly>
+    </div>
+    <div class="country">
+        <label for="country">1a. COUNTRY</label>
+        <input type="text" id="country" value="JP" readonly>
+    </div>
+    <div class="date_of_birth">
+        <label for="date_of_birth">2. DATE OF BIRTH</label>
+        <div id="date_of_birth" class="date">
+            <div class="day">
+                <label for="day_of_birth">Day</label>
+                <input type="text" id="day_of_birth" value="12" readonly>
+            </div>
+            <div class="month">
+                <label for="month_of_birth">Month</label>
+                <input type="text" id="month_of_birth" value="Apr" readonly>
+            </div>
+            <div class="year">
+                <label for="year_of_birth">Year</label>
+                <input type="text" id="year_of_birth" value="1926" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="age">
+        <label for="age">2a. AGE</label>
+        <input type="text" id="age" value="81 as" readonly>
+    </div>
+    <div class="sex">
+        <label for="sex">3. SEX</label>
+        <select id="sex" disabled>
+            <option value="F" selected>F</option>
+            <option value="M">M</option>
+        </select>
+    </div>
+    <div class="reaction_onset">
+        <label for="reaction_onset">4-6 REACTION ONSET</label>
+        <div id="reaction_onset" class="date">
+            <div class="day">
+                <label for="reaction_onset_day">Day</label>
+                <input type="text" id="reaction_onset_day" value="9" readonly>
+            </div>
+            <div class="month">
+                <label for="reaction_onset_month">Month</label>
+                <input type="text" id="reaction_onset_month" value="Oct" readonly>
+            </div>
+            <div class="year">
+                <label for="reaction_onset_year">Year</label>
+                <input type="text" id="reaction_onset_year" value="2008" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="describe_reaction">
+        <label for="describe_reaction">7 + 13 DESCRIBE REACTION(S) (including relevant tests/lab data)</label>
+        <textarea rows="13" id="describe_reaction" readonly>[JA] 間質性肺炎
+
+Case Narrative: An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization).
+
+Relevant tests/lab data:
+MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
+    </div>
+
+    <div class="severity">
+        <label>8-12 CHECK ALL APPROPRIATE TO ADVERSE REACTION</label>
+        <div id="severity">
+            <label for="severity_death">
+                <input type="checkbox" id="severity_death" disabled>
+                PATIENT DIED
+            </label>
+            <label for="severity_hospitalization">
+                <input type="checkbox" id="severity_hospitalization" disabled>
+                INVOLVED OR PROLONGED PATIENT HOSPITALISATION
+            </label>
+            <label for="severity_disability">
+                <input type="checkbox" id="severity_disability" disabled>
+                INVOLVED PERSISTENT OR SIGNIFICANT DISABILITY OR INCAPACITY
+            </label>
+            <label for="severity_life_threatening">
+                <input type="checkbox" id="severity_life_threatening" disabled>
+                LIFE THREATENING
+            </label>
+            <label for="severity_other">
+                <input type="checkbox" id="severity_other" disabled>
+                OTHER
+            </label>
+        </div>
+    </div>
+
+    <div class="suspect_drug"><h2>II. SUSPECT DRUG(S) INFORMATION</h2></div>
+
+    <div class="suspect_drug_1_name">
+        <label for="suspect_drug_1_name">14. SUSPECT DRUG(S) (include generic name)</label>
+        <input type="text" id="suspect_drug_1_name" value="MEVALOTIN" readonly>
+    </div>
+    <div class="suspect_drug_1_daily_dose">
+        <label for="suspect_drug_1_daily_dose">15. DAILY DOSE(S)</label>
+        <input type="text" id="suspect_drug_1_daily_dose"
+               value="20 mg" readonly>
+    </div>
+    <div class="suspect_drug_1_route">
+        <label for="suspect_drug_1_route">16. ROUTE(S) OF ADMINISTRATION</label>
+        <input type="text" id="suspect_drug_1_route"
+               value="PER ORAL" readonly>
+    </div>
+    <div class="suspect_drug_1_indication_for_use">
+        <label for="suspect_drug_1_indication_for_use">17. INDICATION(S) FOR USE</label>
+        <input type="text" id="suspect_drug_1_indication_for_use" value="HYPERLIPIDAEMIA(10062060)" readonly>
+    </div>
+    <div class="suspect_drug_1_therapy_dates">
+        <label>18. THERAPY DATES (from/to)</label>
+        <div id="suspect_drug_1_therapy_dates">
+            <input type="text" id="suspect_drug_1_therapy_from"
+                   value="Jul 2008" readonly>
+            <input type="text" id="suspect_drug_1_therapy_to"
+                   value="6 Oct 2008" readonly>
+        </div>
+    </div>
+    <div class="suspect_drug_1_therapy_duration">
+        <label for="suspect_drug_1_therapy_duration">19. THERAPY DURATION</label>
+        <input type="text" id="suspect_drug_1_therapy_duration"
+               value="" readonly>
+    </div>
+
+    <div class="reaction_abate">
+        <label>20. DID REACTION ABATE AFTER STOPPING DRUG?</label>
+        <div>
+            <label><input type="radio" name="reaction_abate" value="Y" disabled> YES</label>
+            <label><input type="radio" name="reaction_abate" value="N" disabled> NO</label>
+            <label><input type="radio" name="reaction_abate" value="NA" disabled> NA</label>
+        </div>
+    </div>
+    <div class="reaction_reappear">
+        <label>21. DID REACTION REAPPEAR AFTER REINTRODUCTION?</label>
+        <div>
+            <label><input type="radio" name="reaction_reappear" value="Y" disabled> YES</label>
+            <label><input type="radio" name="reaction_reappear" value="N" disabled> NO</label>
+            <label><input type="radio" name="reaction_reappear" value="NA" disabled> NA</label>
+        </div>
+    </div>
+
+    <div class="concomitant_drug"><h2>III. CONCOMITANT DRUG(S) AND HISTORY</h2></div>
+    <div class="concomitant_drug_and_dates_of_administration">
+        <label for="concomitant_drug_and_dates_of_administration">
+            22. CONCOMITANT DRUG(S) AND DATES OF ADMINISTRATION
+            (exclude those used to treat reaction)
+        </label>
+        <textarea rows="4" id="concomitant_drug_and_dates_of_administration" readonly></textarea>
+    </div>
+    <div class="other_relevant_history">
+        <label for="other_relevant_history">
+            23. OTHER RELEVANT HISTORY (e.g. diagnostics, allergics, pregnancy with last month of period, etc.)
+        </label>
+        <textarea rows="4" id="other_relevant_history" readonly>10020603</textarea>
+    </div>
+
+    <div class="manufacturer"><h2>IV. MANUFACTURER INFORMATION</h2></div>
+    <div class="name_and_address_of_manufacturer">
+        <label for="name_and_address_of_manufacturer">24a. NAME AND ADDRESS OF MANUFACTURER</label>
+        <textarea rows="6" id="name_and_address_of_manufacturer" readonly>Daiichi Sankyo Company, Limited, Pharmacovigilance, Hanako, Yamada, 3-5-1 Nihonbashi Honcho, Chuo-ku, Tokyo, 103-8426, JP</textarea>
+    </div>
+    <div class="text"><textarea></textarea></div>
+    <div class="text2"><input type="text"></div>
+    <div class="manufacturer_control_number">
+        <label for="manufacturer_control_number">24b. MFR CONTROL NO.</label>
+        <input type="text" id="manufacturer_control_number" value="JP-DSJP-DSJ-2009-98765-1" readonly>
+    </div>
+    <div class="date_received_by_manufacturer">
+        <label for="date_received_by_manufacturer">24c. DATE RECEIVED BY MANUFACTURER</label>
+        <input type="text" id="date_received_by_manufacturer" value="12 Apr 2010" readonly>
+    </div>
+    <div class="report_source">
+        <label>24d. REPORT SOURCE</label>
+        <div id="report_source">
+            <div>
+                <label><input type="checkbox" checked disabled> STUDY</label>
+                <label><input type="checkbox" checked disabled> LITERATURE</label>
+            </div>
+            <label><input type="checkbox" checked disabled> HEALTH PROFESSIONAL</label>
+        </div>
+    </div>
+    <div class="date_of_report">
+        <label for="date_of_report">DATE OF THIS REPORT</label>
+        <input type="text" id="date_of_report" value="20 Jul 2012" readonly>
+    </div>
+    <div class="report_type">
+        <label>25a. REPORT TYPE</label>
+        <div id="report_type">
+            <label><input type="radio" name="report_type" value="initial" checked disabled> INITIAL</label>
+            <label><input type="radio" name="report_type" value="followup" disabled> FOLLOWUP</label>
+        </div>
+    </div>
+</section>
+
+<!-- Continuation section -->
+<section class="layout_continue" style="display:none;">
+    <div class="continue"><h2>CONTINUES PREVIOUS PAGE</h2></div>
+    <div style="border-top:0.05mm solid rgba(0,0,0,.5);">
+        <label style="font-weight:bold; padding:2px 4px; display:block;">
+            14-21 SUSPECT DRUG(S) INFORMATION continued
+        </label>
+        
+    </div>
+    
+</section>
+
+<div class="button">
+    <button onclick="print()">Save as PDF</button>
+</div>
+
+</body>
+</html>
