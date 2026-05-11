@@ -416,6 +416,58 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                           </inboundRelationship>
                         </substanceAdministration>
                       </component>
+                      <component typeCode="COMP">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                          <id root="a1b2c3d4-e5f6-7890-abcd-ef1234567890"/>
+                          <consumable typeCode="CSM">
+                            <instanceOfKind classCode="INST">
+                              <kindOfProduct classCode="MMAT" determinerCode="KIND">
+                                <name>AMLODIPINE</name>
+                                <ingredient classCode="ACTI">
+                                  <quantity>
+                                    <numerator value="5" unit="mg"/>
+                                    <denominator value="1"/>
+                                  </quantity>
+                                  <ingredientSubstance classCode="MMAT" determinerCode="KIND">
+                                    <name>AMLODIPINE BESYLATE</name>
+                                  </ingredientSubstance>
+                                </ingredient>
+                              </kindOfProduct>
+                            </instanceOfKind>
+                          </consumable>
+                          <outboundRelationship2 typeCode="COMP">
+                            <substanceAdministration classCode="SBADM" moodCode="EVN">
+                              <effectiveTime xsi:type="SXPR_TS">
+                                <comp xsi:type="IVL_TS" operator="A">
+                                  <low value="20080101"/>
+                                  <high value="20081006"/>
+                                </comp>
+                              </effectiveTime>
+                              <routeCode code="048" codeSystem="2.16.840.1.113883.3.989.2.1.1.14">
+                                <originalText>PER ORAL</originalText>
+                              </routeCode>
+                              <doseQuantity value="5" unit="mg"/>
+                              <consumable typeCode="CSM">
+                                <instanceOfKind classCode="INST">
+                                  <kindOfProduct classCode="MMAT" determinerCode="KIND">
+                                    <formCode>
+                                      <originalText>TABLET</originalText>
+                                    </formCode>
+                                  </kindOfProduct>
+                                </instanceOfKind>
+                              </consumable>
+                            </substanceAdministration>
+                          </outboundRelationship2>
+                          <inboundRelationship typeCode="RSON">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <code code="19" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                              <value xsi:type="CE" code="10007541" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15">
+                                <originalText>HYPERTENSION</originalText>
+                              </value>
+                            </observation>
+                          </inboundRelationship>
+                        </substanceAdministration>
+                      </component>
                     </organizer>
                   </subjectOf2>
                 </primaryRole>
@@ -428,6 +480,18 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                   <subject2 typeCode="SUBJ">
                     <productUseReference classCode="SBADM" moodCode="EVN">
                       <id root="3c91b4d5-e039-4a7a-9c30-67671b0ef9e4"/>
+                    </productUseReference>
+                  </subject2>
+                </causalityAssessment>
+              </component>
+              <component typeCode="COMP">
+                <causalityAssessment classCode="OBS" moodCode="EVN">
+                  <code code="20" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                  <value xsi:type="CE" code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.13"/>
+                  <!-- G.k.1: Characterisation of Drug Role = 2 (Concomitant) -->
+                  <subject2 typeCode="SUBJ">
+                    <productUseReference classCode="SBADM" moodCode="EVN">
+                      <id root="a1b2c3d4-e5f6-7890-abcd-ef1234567890"/>
                     </productUseReference>
                   </subject2>
                 </causalityAssessment>

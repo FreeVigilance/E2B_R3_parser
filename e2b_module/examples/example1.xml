@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MCCI_IN200100UV01 ITSVersion="XML_1.0" xsi:schemaLocation="urn:hl7-org:v3 MCCI_IN200100UV01.xsd" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<MCCI_IN200100UV01 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <id extension="DSJP-B0123456" root="2.16.840.1.113883.3.989.2.1.3.22"/>
-  <!-- N.1.2: Batch Number -->
   <creationTime value="20120720100000"/>
-  <!-- N.1.5: Date of Batch Transmission -->
   <responseModeCode code="D"/>
   <interactionId extension="MCCI_IN200100UV01" root="2.16.840.1.113883.1.6"/>
   <name code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.1"/>
-  <!-- N.1.1: Type of Messages in Batch -->
-  <!-- Message #1 -->
   <PORR_IN049016UV>
     <id extension="DSJP-B0123456-Lit1" root="2.16.840.1.113883.3.989.2.1.3.1"/>
-    <!-- N.2.r.1: Message Identifier -->
     <creationTime value="20120720100001+09"/>
-    <!-- N.2.r.4: Date of Message Creation -->
     <interactionId extension="PORR_IN049016UV" root="2.16.840.1.113883.1.6"/>
     <processingCode code="P"/>
     <processingModeCode code="T"/>
@@ -21,45 +15,44 @@
     <receiver typeCode="RCV">
       <device classCode="DEV" determinerCode="INSTANCE">
         <id extension="ICHTEST" root="2.16.840.1.113883.3.989.2.1.3.12"/>
-        <!-- N.2.r.3: Message Receiver Identifier -->
       </device>
     </receiver>
     <sender typeCode="SND">
       <device classCode="DEV" determinerCode="INSTANCE">
         <id extension="DSJP" root="2.16.840.1.113883.3.989.2.1.3.11"/>
-        <!-- N.2.r.2: Message Sender Identifier -->
       </device>
     </sender>
     <controlActProcess classCode="CACT" moodCode="EVN">
       <code code="PORR_TE049016UV" codeSystem="2.16.840.1.113883.1.18"/>
-      <!-- HL7 Trigger Event ID -->
       <effectiveTime value="20120720100001+09"/>
       <!-- C.1.2: Date of Creation -->
       <subject typeCode="SUBJ">
         <investigationEvent classCode="INVSTG" moodCode="EVN">
-          <id extension="JP-DSJP-DSJ-2009-98765-1" root="2.16.840.1.113883.3.989.2.1.3.1"/>
-          <!-- C.1.1: Sender's (case) Safety Report Unique Identifier -->
+          <id extension="DSJ-2009-98765" root="2.16.840.1.113883.3.989.2.1.3.1"/>
+          <!-- C.1.1: Sender's Safety Report Unique Identifier -->
           <id extension="JP-DSJP-DSJ-2009-98765-1" root="2.16.840.1.113883.3.989.2.1.3.2"/>
           <!-- C.1.8.1: Worldwide Unique Case Identification Number -->
           <code code="PAT_ADV_EVNT" codeSystem="2.16.840.1.113883.5.4"/>
-          <text>An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization).An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization).An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization)</text>
-          <!-- H.1: Case Narrative Including Clinical Course, Therapeutic Measures, Outcome and Additional Relevant Information -->
+          <text>An 81-year-old Japanese female patient (T.O.) with a medical history of hyperlipidaemia (since 2003), hypertension (since 2006), and type 2 diabetes mellitus (since 2003, diet-controlled) was receiving MEVALOTIN (pravastatin sodium) 20 mg once daily by oral route since July 2008 for the management of hyperlipidaemia. Concomitant medications at the time of the event included AMLODIPINE 5 mg once daily (for hypertension, commenced January 2008) and LOSARTAN POTASSIUM 50 mg once daily (commenced March 2008).
+
+On 09 October 2008, approximately 15 months after initiation of MEVALOTIN therapy, the patient developed acute-onset dyspnoea, dry cough, and low-grade fever (37.8 degrees C). She was admitted to hospital and chest computed tomography (CT) revealed bilateral ground-glass opacities with sub-pleural consolidation consistent with drug-induced interstitial pneumonia. Pulmonary function tests showed a restrictive pattern (FVC 62% predicted). Bronchoalveolar lavage (BAL) demonstrated lymphocytic alveolitis with a CD4/CD8 ratio of 0.9. Serum LDH was elevated at 412 U/L. Drug lymphocyte stimulation tests (DLST) were performed for MEVALOTIN, AMLODIPINE, LOSARTAN, and LASIX; all results were negative.
+
+MEVALOTIN was immediately discontinued upon hospitalisation. The patient was treated with systemic corticosteroids (prednisolone 40 mg/day, tapered over 8 weeks). Chest CT at 4-week follow-up demonstrated marked improvement in bilateral ground-glass opacities. The patient showed progressive clinical improvement and was discharged on 01 December 2008 after 54 days of inpatient hospitalisation.
+
+Based on the temporal association between MEVALOTIN initiation and onset of interstitial pneumonia, the radiological pattern, BAL findings, and clinical improvement following drug withdrawal and corticosteroid therapy, drug-induced interstitial pneumonia secondary to MEVALOTIN (pravastatin sodium) is considered the most likely diagnosis. Causality is assessed as related by the reporter.</text>
+          <!-- H.1: Case Narrative -->
           <statusCode code="active"/>
           <effectiveTime>
             <low value="20090622"/>
             <!-- C.1.4: Date Report Was First Received from Source -->
           </effectiveTime>
-          <availabilityTime value="20100412"/>
+          <availabilityTime value="20101015"/>
           <!-- C.1.5: Date of Most Recent Information for This Report -->
           <reference typeCode="REFR">
             <document classCode="DOC" moodCode="EVN">
               <code code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.27"/>
               <text mediaType="application/pdf" representation="B64">Application/PDF</text>
-              <!-- C.4.r.2: Included Documents -->
-              <bibliographicDesignationText>K. Kudo, et al. (2009) A Case of Heparin-Induced Thrombocytopenia and
-Disseminated Intravascular Coagulation during Treatment for Drug-Induced
-Pneumonia. Journal of Japanese Respiratory Society, The 49th Annual Meeting of
-The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
+              <bibliographicDesignationText>K. Kudo, et al. (2009) A Case of Drug-Induced Interstitial Pneumonia during Pravastatin Sodium Therapy. Journal of Japanese Respiratory Society, The 49th Annual Meeting of The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
               <!-- C.4.r.1: Literature Reference(s) -->
             </document>
           </reference>
@@ -71,62 +64,96 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                     <name>T.O.</name>
                     <!-- D.1: Patient (name or initials) -->
                     <administrativeGenderCode code="2" codeSystem="1.0.5218"/>
-                    <!-- D.5 Sex -->
+                    <!-- D.5: Sex (2=Female) -->
                     <birthTime value="19260412"/>
                     <!-- D.2.1: Date of Birth -->
                   </player1>
+
+                  <!-- D.2.2: Age at onset -->
                   <subjectOf2 typeCode="SBJ">
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="3" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                       <value xsi:type="PQ" value="81" unit="a"/>
-                      <!-- D.2.2a: Age at Time of Onset of Reaction / Event (number) -->
-                      <!-- D.2.2b: Age at Time of Onset of Reaction / Event (unit) -->
                     </observation>
                   </subjectOf2>
+
+                  <!-- D.3: Body weight -->
                   <subjectOf2 typeCode="SBJ">
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="7" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-                      <value xsi:type="PQ" value="59" unit="kg"/>
-                      <!-- D.3: Body Weight (kg) -->
+                      <value xsi:type="PQ" value="52" unit="kg"/>
                     </observation>
                   </subjectOf2>
+
+                  <!-- D.4: Height -->
                   <subjectOf2 typeCode="SBJ">
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="17" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                       <value xsi:type="PQ" value="153" unit="cm"/>
-                      <!-- D.4: Height (cm) -->
                     </observation>
                   </subjectOf2>
+
+                  <!-- D.6: Last Menstrual Period Date (not applicable) -->
                   <subjectOf2 typeCode="SBJ">
                     <observation classCode="OBS" moodCode="EVN">
                       <code code="22" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                       <value xsi:type="TS" nullFlavor="NASK"/>
-                      <!-- D.6: Last Menstrual Period Date -->
                     </observation>
                   </subjectOf2>
+
+                  <!-- D.7.1: Structured Medical History -->
                   <subjectOf2 typeCode="SBJ">
                     <organizer classCode="CATEGORY" moodCode="EVN">
                       <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.20"/>
+                      <!-- Hyperlipidaemia (MedDRA 10020603) since 2003, ongoing -->
                       <component typeCode="COMP">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="10020603" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15"/>
-                          <!-- D.7.1.r.1a: MedDRA Version for Medical History -->
-                          <!-- D.7.1.r.1b: Medical History (disease / surgical procedure / etc.) (MedDRA code) -->
                           <effectiveTime xsi:type="IVL_TS">
-                            <low value="200807"/>
-                            <!-- D.7.1.r.2: Start Date -->
+                            <low value="20030101"/>
                           </effectiveTime>
                           <inboundRelationship typeCode="REFR">
                             <observation classCode="OBS" moodCode="EVN">
                               <code code="13" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                               <value xsi:type="BL" value="true"/>
-                              <!-- D.7.1.r.3: Continuing -->
+                            </observation>
+                          </inboundRelationship>
+                        </observation>
+                      </component>
+                      <!-- Hypertension (MedDRA 10020772) since 2006, ongoing -->
+                      <component typeCode="COMP">
+                        <observation classCode="OBS" moodCode="EVN">
+                          <code code="10020772" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15"/>
+                          <effectiveTime xsi:type="IVL_TS">
+                            <low value="20060101"/>
+                          </effectiveTime>
+                          <inboundRelationship typeCode="REFR">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <code code="13" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                              <value xsi:type="BL" value="true"/>
+                            </observation>
+                          </inboundRelationship>
+                        </observation>
+                      </component>
+                      <!-- Type 2 Diabetes Mellitus (MedDRA 10067585) since 2003, ongoing -->
+                      <component typeCode="COMP">
+                        <observation classCode="OBS" moodCode="EVN">
+                          <code code="10067585" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15"/>
+                          <effectiveTime xsi:type="IVL_TS">
+                            <low value="20030601"/>
+                          </effectiveTime>
+                          <inboundRelationship typeCode="REFR">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <code code="13" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                              <value xsi:type="BL" value="true"/>
                             </observation>
                           </inboundRelationship>
                         </observation>
                       </component>
                     </organizer>
                   </subjectOf2>
+
+                  <!-- E.i Reaction: Interstitial Pneumonia -->
                   <subjectOf2 typeCode="SBJ">
                     <observation classCode="OBS" moodCode="EVN">
                       <id root="154eb889-958b-45f2-a02f-42d4d6f4657f"/>
@@ -134,116 +161,102 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                       <effectiveTime xsi:type="SXPR_TS">
                         <comp xsi:type="IVL_TS">
                           <low value="20081009"/>
-                          <!-- E.i.4: Date of Start of Reaction / Event -->
+                          <!-- E.i.4: Date of Start -->
                           <high value="20081201"/>
-                          <!-- E.i.5: Date of End of Reaction / Event -->
+                          <!-- E.i.5: Date of End -->
                         </comp>
                         <comp xsi:type="IVL_TS" operator="A">
                           <width value="54" unit="d"/>
-                          <!-- E.i.6a: Duration of Reaction / Event (number) -->
-                          <!-- E.i.6b: Duration of Reaction / Event (unit) -->
+                          <!-- E.i.6: Duration 54 days -->
                         </comp>
                       </effectiveTime>
                       <value xsi:type="CE" code="10022617" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15">
-                        <!-- E.i.2.1a: MedDRA Version for Reaction / Event -->
-                        <!-- E.i.2.1b: Reaction / Event (MedDRA code) -->
+                        <!-- E.i.2.1b: MedDRA code for Interstitial Lung Disease -->
                         <originalText language="JA">間質性肺炎</originalText>
-                        <!-- E.i.1.1a: Reaction / Event as Reported by the Primary Source in Native Language -->
-                        <!-- E.i.1.1b: Reaction / Event as Reported by the Primary Source Language -->
+                        <!-- E.i.1.1a: Reaction in native language -->
                       </value>
                       <location typeCode="LOC">
                         <locatedEntity classCode="LOCE">
                           <locatedPlace classCode="COUNTRY" determinerCode="INSTANCE">
                             <code code="JP" codeSystem="1.0.3166.1.2.2"/>
-                            <!-- E.i.9: Identification of the Country Where the Reaction / Event Occurred -->
+                            <!-- E.i.9: Country where reaction occurred -->
                           </locatedPlace>
                         </locatedEntity>
                       </location>
+                      <!-- E.i.1.2: Reaction as reported (translation) -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="30" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                           <value xsi:type="ED">INTERSTITIAL PNEUMONIA</value>
-                          <!-- E.i.1.2: Reaction / Event as Reported by the Primary Source for Translation -->
                         </observation>
                       </outboundRelationship2>
-                      <outboundRelationship2 typeCode="PERT">
-                        <observation classCode="OBS" moodCode="EVN">
-                          <code code="37" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-                          <value xsi:type="CE" code="3" codeSystem="2.16.840.1.113883.3.989.2.1.1.10"/>
-                          <!-- E.i.3.1: Term Highlighted by the Reporter -->
-                        </observation>
-                      </outboundRelationship2>
+                      <!-- E.i.3.2a: Results in Death — No -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="34" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-                          <value xsi:type="BL" nullFlavor="NI"/>
-                          <!-- E.i.3.2a: Results in Death -->
+                          <value xsi:type="BL" value="false"/>
                         </observation>
                       </outboundRelationship2>
+                      <!-- E.i.3.2b: Life Threatening — Yes -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="21" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                           <value xsi:type="BL" value="true"/>
-                          <!-- E.i.3.2b: Life Threatening -->
                         </observation>
                       </outboundRelationship2>
+                      <!-- E.i.3.2c: Caused/Prolonged Hospitalisation — Yes -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="33" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                           <value xsi:type="BL" value="true"/>
-                          <!-- E.i.3.2c: Caused / Prolonged Hospitalisation -->
                         </observation>
                       </outboundRelationship2>
+                      <!-- E.i.3.2d: Disabling/Incapacitating — No -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="35" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-                          <value xsi:type="BL" nullFlavor="NI"/>
-                          <!-- E.i.3.2d: Disabling / Incapacitating -->
+                          <value xsi:type="BL" value="false"/>
                         </observation>
                       </outboundRelationship2>
+                      <!-- E.i.3.2e: Congenital Anomaly — No -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="12" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                           <value xsi:type="BL" nullFlavor="NI"/>
-                          <!-- E.i.3.2e: Congenital Anomaly / Birth Defect -->
                         </observation>
                       </outboundRelationship2>
+                      <!-- E.i.3.2f: Other Medically Important Condition — No -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="26" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                           <value xsi:type="BL" nullFlavor="NI"/>
-                          <!-- E.i.3.2f: Other Medically Important Condition -->
                         </observation>
                       </outboundRelationship2>
+                      <!-- E.i.7: Outcome — Recovered/Resolved (1) -->
                       <outboundRelationship2 typeCode="PERT">
                         <observation classCode="OBS" moodCode="EVN">
                           <code code="27" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                           <value xsi:type="CE" code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.11"/>
-                          <!-- E.i.7: Outcome of Reaction / Event at the Time of Last Observation -->
                         </observation>
                       </outboundRelationship2>
                     </observation>
                   </subjectOf2>
+
+                  <!-- F.r: Test / Lab Results -->
                   <subjectOf2 typeCode="SBJ">
                     <organizer classCode="CATEGORY" moodCode="EVN">
                       <code code="3" codeSystem="2.16.840.1.113883.3.989.2.1.1.20"/>
+                      <!-- F.r.1: CRP — F.r.2.2b MedDRA 10006824 (C-reactive protein) -->
                       <component typeCode="COMP">
                         <observation classCode="OBS" moodCode="EVN">
-                          <code code="10006824" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15">
-                            <!-- F.r.2.2a: MedDRA Version for Test Name #1 -->
-                            <!-- F.r.2.2b: Test Name (MedDRA code) #1 -->
-                          </code>
+                          <code code="10006824" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15"/>
                           <effectiveTime value="20081010"/>
-                          <!-- F.r.1: Test Date #1 -->
                           <value xsi:type="IVL_PQ">
                             <center value="4.46" unit="mg/dL"/>
-                            <!-- F.r.3.2: Test Result (value / qualifier) #1 -->
-                            <!-- F.r.3.3: Test Result (unit) #1 -->
                           </value>
                           <referenceRange typeCode="REFV">
                             <observationRange classCode="OBS" moodCode="EVN.CRT">
-                              <value xsi:type="PQ" value="0.1" unit="mg/dl"/>
-                              <!-- F.r.5:  Normal High Value #1 -->
+                              <value xsi:type="PQ" value="0.10" unit="mg/dL"/>
                               <interpretationCode code="H" codeSystem="2.16.840.1.113883.5.83"/>
                             </observationRange>
                           </referenceRange>
@@ -251,29 +264,49 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                             <observation classCode="OBS" moodCode="EVN">
                               <code code="25" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                               <value xsi:type="BL" value="false"/>
-                              <!--F.r.7: More Information Available #1 -->
                             </observation>
                           </outboundRelationship2>
                         </observation>
                       </component>
+                      <!-- F.r: DLST (free-text result) -->
                       <component typeCode="COMP">
                         <observation classCode="OBS" moodCode="EVN">
                           <code codeSystem="2.16.840.1.113883.6.163">
                             <originalText>DLST</originalText>
-                            <!-- F.r.2.1: Test Name (free text) #2 -->
+                          </code>
+                          <effectiveTime value="20081015"/>
+                          <value xsi:type="ED">MEVALOTIN(-), AMLODIPINE(-), LOSARTAN(-), LASIX(-)</value>
+                        </observation>
+                      </component>
+                      <!-- F.r: LDH (elevated) -->
+                      <component typeCode="COMP">
+                        <observation classCode="OBS" moodCode="EVN">
+                          <code codeSystem="2.16.840.1.113883.6.163">
+                            <originalText>LDH</originalText>
                           </code>
                           <effectiveTime value="20081010"/>
-                          <!-- F.r.1: Test Date #2 -->
-                          <value xsi:type="ED">MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</value>
-                          <!-- F.r.3.4: Result Unstructured Data (free text) #2 -->
+                          <value xsi:type="ED">412 U/L (normal &lt;220 U/L) — elevated</value>
+                        </observation>
+                      </component>
+                      <!-- F.r: BAL findings -->
+                      <component typeCode="COMP">
+                        <observation classCode="OBS" moodCode="EVN">
+                          <code codeSystem="2.16.840.1.113883.6.163">
+                            <originalText>BAL DIFFERENTIAL</originalText>
+                          </code>
+                          <effectiveTime value="20081012"/>
+                          <value xsi:type="ED">Lymphocytes 48%, CD4/CD8 ratio 0.9 — lymphocytic alveolitis pattern</value>
                         </observation>
                       </component>
                     </organizer>
                   </subjectOf2>
+
+                  <!-- G.k: Drug Information -->
                   <subjectOf2 typeCode="SBJ">
                     <organizer classCode="CATEGORY" moodCode="EVN">
                       <code code="4" codeSystem="2.16.840.1.113883.3.989.2.1.1.20"/>
-                      <!-- G.k Drug(s) Information (repeat as necessary) -->
+
+                      <!-- G.k Suspect Drug #1: MEVALOTIN (pravastatin sodium) 20 mg -->
                       <component typeCode="COMP">
                         <substanceAdministration classCode="SBADM" moodCode="EVN">
                           <id root="3c91b4d5-e039-4a7a-9c30-67671b0ef9e4"/>
@@ -281,21 +314,17 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                             <instanceOfKind classCode="INST">
                               <kindOfProduct classCode="MMAT" determinerCode="KIND">
                                 <code code="218901001" codeSystem="TBD-MPID" codeSystemVersion="1.01"/>
-                                <!-- Example MPID and Version -->
-                                <!-- G.k.2.1.1a: MPID Version Date / Number -->
-                                <!-- G.k.2.1.1b: Medicinal Product Identifier (MPID) -->
                                 <name>MEVALOTIN</name>
-                                <!-- G.k.2.2: Medicinal Product Name as Reported by the Primary Source -->
+                                <!-- G.k.2.2: Product name -->
                                 <asManufacturedProduct classCode="MANU">
                                   <subjectOf typeCode="SBJ">
                                     <approval classCode="CNTRCT" moodCode="EVN">
                                       <id extension="20300AMZ00671000" root="2.16.840.1.113883.3.989.2.1.3.4"/>
-                                      <!-- G.k.3.1: Authorization / Application Number -->
+                                      <!-- G.k.3.1: Authorization number -->
                                       <holder typeCode="HLD">
                                         <role classCode="HLD">
                                           <playingOrganization classCode="ORG" determinerCode="INSTANCE">
                                             <name>Daiichi Sankyo Company, Limited</name>
-                                            <!-- G.k.3.3: Name of Holder / Applicant -->
                                           </playingOrganization>
                                         </role>
                                       </holder>
@@ -303,7 +332,6 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                                         <territorialAuthority classCode="TERR">
                                           <territory classCode="NAT" determinerCode="INSTANCE">
                                             <code code="JP" codeSystem="1.0.3166.1.2.2"/>
-                                            <!-- G.k.3.2: Country of Authorization / Application -->
                                           </territory>
                                         </territorialAuthority>
                                       </author>
@@ -313,17 +341,11 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                                 <ingredient classCode="ACTI">
                                   <quantity>
                                     <numerator value="20" unit="mg"/>
-                                    <!-- G.k.2.3.r.3a: Strength (number) -->
-                                    <!-- G.k.2.3.r.3b: Strength (unit) -->
                                     <denominator value="1"/>
                                   </quantity>
                                   <ingredientSubstance classCode="MMAT" determinerCode="KIND">
                                     <code code="568874" codeSystem="TBD-Substance" codeSystemVersion="1.52"/>
-                                    <!-- Example Substance ID and Version -->
-                                    <!-- G.k.2.3.r.2a Substance / Specified Substance TermID Version Date/Number -->
-                                    <!-- G.k.2.3.r.2b: Substance / Specified Substance TermID -->
                                     <name>PRAVASTATIN SODIUM</name>
-                                    <!-- G.k.2.3.r.1: Substance / Specified Substance Name -->
                                   </ingredientSubstance>
                                 </ingredient>
                               </kindOfProduct>
@@ -335,7 +357,6 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                                       <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                                         <addr>
                                           <country>JP</country>
-                                          <!-- G.k.2.4: Identification of the Country Where the Drug Was Obtained -->
                                         </addr>
                                       </representedOrganization>
                                     </assignedEntity>
@@ -344,47 +365,38 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                               </subjectOf>
                             </instanceOfKind>
                           </consumable>
+                          <!-- G.k.4.r: Dosage — 20 mg/day PO from Jul 2008 to Oct 2008 -->
                           <outboundRelationship2 typeCode="COMP">
-                            <!-- G.k.4.r: Dosage and Relevant Information (repeat as necessary) -->
                             <substanceAdministration classCode="SBADM" moodCode="EVN">
                               <effectiveTime xsi:type="SXPR_TS">
                                 <comp xsi:type="PIVL_TS">
                                   <period value="1" unit="d"/>
-                                  <!-- G.k.4.r.2: Number of Units in the Interval -->
-                                  <!-- G.k.4.r.3: Definition of the Time Interval Unit -->
                                 </comp>
                                 <comp xsi:type="IVL_TS" operator="A">
                                   <low value="200807"/>
-                                  <!-- G.k.4.r.4: Date and Time of Start of Drug -->
                                   <high value="20081006"/>
-                                  <!-- G.k.4.r.5: Date and Time of Last Administration -->
                                 </comp>
                               </effectiveTime>
                               <routeCode code="048" codeSystem="2.16.840.1.113883.3.989.2.1.1.14">
-                                <!-- G.k.4.r.10.2b: Route of Administration TermID -->
                                 <originalText>PER ORAL</originalText>
-                                <!-- G.k.4.r.10.1: Route of Administration (free text) -->
                               </routeCode>
                               <doseQuantity value="20" unit="mg"/>
-                              <!-- G.k.4.r.1a Dose (number) -->
-                              <!-- G.k.4.r.1b: Dose (unit) -->
                               <consumable typeCode="CSM">
                                 <instanceOfKind classCode="INST">
                                   <kindOfProduct classCode="MMAT" determinerCode="KIND">
                                     <formCode>
                                       <originalText>TABLET</originalText>
-                                      <!-- G.k.4.r.9.1: Pharmaceutical Dose Form (free text) -->
                                     </formCode>
                                   </kindOfProduct>
                                 </instanceOfKind>
                               </consumable>
                             </substanceAdministration>
                           </outboundRelationship2>
+                          <!-- G.k.9.i.4: Did reaction recur on re-administration? NA (4) -->
                           <outboundRelationship2 typeCode="PERT">
                             <observation classCode="OBS" moodCode="EVN">
                               <code code="31" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                               <value xsi:type="CE" code="4" codeSystem="2.16.840.1.113883.3.989.2.1.1.16"/>
-                              <!-- G.k.9.i.4: Did Reaction Recur on Re-administration? -->
                               <outboundRelationship1 typeCode="REFR">
                                 <actReference classCode="OBS" moodCode="EVN">
                                   <id root="154eb889-958b-45f2-a02f-42d4d6f4657f"/>
@@ -392,39 +404,157 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                               </outboundRelationship1>
                             </observation>
                           </outboundRelationship2>
+                          <!-- G.k.7.r: Indication — Hyperlipidaemia -->
                           <inboundRelationship typeCode="RSON">
                             <observation classCode="OBS" moodCode="EVN">
                               <code code="19" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                               <value xsi:type="CE" code="10062060" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15">
-                                <!-- G.k.7.r.2a: MedDRA Version for Indication -->
-                                <!-- G.k.7.r.2b: Indication (MedDRA code) -->
                                 <originalText>HYPERLIPIDAEMIA</originalText>
-                                <!-- G.k.7.r.1: Indication as Reported by the Primary Source -->
                               </value>
-                              <performer typeCode="PRF">
-                                <assignedEntity classCode="ASSIGNED">
-                                  <code code="3" codeSystem="2.16.840.1.113883.3.989.2.1.1.21"/>
-                                </assignedEntity>
-                              </performer>
                             </observation>
                           </inboundRelationship>
+                          <!-- G.k.8: Action taken — Drug Withdrawn (1) -->
                           <inboundRelationship typeCode="CAUS">
                             <act classCode="ACT" moodCode="EVN">
                               <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.15"/>
-                              <!-- G.k.8: Action(s) Taken with Drug -->
                             </act>
                           </inboundRelationship>
                         </substanceAdministration>
                       </component>
+
+                      <!-- G.k Concomitant Drug #1: AMLODIPINE 5 mg — role=2 -->
+                      <component typeCode="COMP">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                          <id root="b2c3d4e5-f6a7-8901-bcde-f12345678901"/>
+                          <consumable typeCode="CSM">
+                            <instanceOfKind classCode="INST">
+                              <kindOfProduct classCode="MMAT" determinerCode="KIND">
+                                <name>AMLODIPINE</name>
+                                <ingredient classCode="ACTI">
+                                  <quantity>
+                                    <numerator value="5" unit="mg"/>
+                                    <denominator value="1"/>
+                                  </quantity>
+                                  <ingredientSubstance classCode="MMAT" determinerCode="KIND">
+                                    <name>AMLODIPINE BESYLATE</name>
+                                  </ingredientSubstance>
+                                </ingredient>
+                              </kindOfProduct>
+                            </instanceOfKind>
+                          </consumable>
+                          <outboundRelationship2 typeCode="COMP">
+                            <substanceAdministration classCode="SBADM" moodCode="EVN">
+                              <effectiveTime xsi:type="SXPR_TS">
+                                <comp xsi:type="PIVL_TS">
+                                  <period value="1" unit="d"/>
+                                </comp>
+                                <comp xsi:type="IVL_TS" operator="A">
+                                  <low value="20080101"/>
+                                  <high value="20081009"/>
+                                </comp>
+                              </effectiveTime>
+                              <routeCode code="048" codeSystem="2.16.840.1.113883.3.989.2.1.1.14">
+                                <originalText>PER ORAL</originalText>
+                              </routeCode>
+                              <doseQuantity value="5" unit="mg"/>
+                              <consumable typeCode="CSM">
+                                <instanceOfKind classCode="INST">
+                                  <kindOfProduct classCode="MMAT" determinerCode="KIND">
+                                    <formCode><originalText>TABLET</originalText></formCode>
+                                  </kindOfProduct>
+                                </instanceOfKind>
+                              </consumable>
+                            </substanceAdministration>
+                          </outboundRelationship2>
+                          <inboundRelationship typeCode="RSON">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <code code="19" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                              <value xsi:type="CE" code="10020772" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15">
+                                <originalText>HYPERTENSION</originalText>
+                              </value>
+                            </observation>
+                          </inboundRelationship>
+                          <!-- G.k.8: Action taken — Dose Not Changed (4) -->
+                          <inboundRelationship typeCode="CAUS">
+                            <act classCode="ACT" moodCode="EVN">
+                              <code code="4" codeSystem="2.16.840.1.113883.3.989.2.1.1.15"/>
+                            </act>
+                          </inboundRelationship>
+                        </substanceAdministration>
+                      </component>
+
+                      <!-- G.k Concomitant Drug #2: LOSARTAN POTASSIUM 50 mg — role=2 -->
+                      <component typeCode="COMP">
+                        <substanceAdministration classCode="SBADM" moodCode="EVN">
+                          <id root="c3d4e5f6-a7b8-9012-cdef-123456789012"/>
+                          <consumable typeCode="CSM">
+                            <instanceOfKind classCode="INST">
+                              <kindOfProduct classCode="MMAT" determinerCode="KIND">
+                                <name>LOSARTAN POTASSIUM</name>
+                                <ingredient classCode="ACTI">
+                                  <quantity>
+                                    <numerator value="50" unit="mg"/>
+                                    <denominator value="1"/>
+                                  </quantity>
+                                  <ingredientSubstance classCode="MMAT" determinerCode="KIND">
+                                    <name>LOSARTAN</name>
+                                  </ingredientSubstance>
+                                </ingredient>
+                              </kindOfProduct>
+                            </instanceOfKind>
+                          </consumable>
+                          <outboundRelationship2 typeCode="COMP">
+                            <substanceAdministration classCode="SBADM" moodCode="EVN">
+                              <effectiveTime xsi:type="SXPR_TS">
+                                <comp xsi:type="PIVL_TS">
+                                  <period value="1" unit="d"/>
+                                </comp>
+                                <comp xsi:type="IVL_TS" operator="A">
+                                  <low value="20080315"/>
+                                  <high value="20081009"/>
+                                </comp>
+                              </effectiveTime>
+                              <routeCode code="048" codeSystem="2.16.840.1.113883.3.989.2.1.1.14">
+                                <originalText>PER ORAL</originalText>
+                              </routeCode>
+                              <doseQuantity value="50" unit="mg"/>
+                              <consumable typeCode="CSM">
+                                <instanceOfKind classCode="INST">
+                                  <kindOfProduct classCode="MMAT" determinerCode="KIND">
+                                    <formCode><originalText>TABLET</originalText></formCode>
+                                  </kindOfProduct>
+                                </instanceOfKind>
+                              </consumable>
+                            </substanceAdministration>
+                          </outboundRelationship2>
+                          <inboundRelationship typeCode="RSON">
+                            <observation classCode="OBS" moodCode="EVN">
+                              <code code="19" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                              <value xsi:type="CE" code="10020772" codeSystem="2.16.840.1.113883.6.163" codeSystemVersion="15">
+                                <originalText>HYPERTENSION</originalText>
+                              </value>
+                            </observation>
+                          </inboundRelationship>
+                          <!-- G.k.8: Action taken — Dose Not Changed (4) -->
+                          <inboundRelationship typeCode="CAUS">
+                            <act classCode="ACT" moodCode="EVN">
+                              <code code="4" codeSystem="2.16.840.1.113883.3.989.2.1.1.15"/>
+                            </act>
+                          </inboundRelationship>
+                        </substanceAdministration>
+                      </component>
+
                     </organizer>
                   </subjectOf2>
                 </primaryRole>
               </subject1>
+
+              <!-- G.k.1: Drug Role Assignments -->
+              <!-- MEVALOTIN — role 1 (Suspect) -->
               <component typeCode="COMP">
                 <causalityAssessment classCode="OBS" moodCode="EVN">
                   <code code="20" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                   <value xsi:type="CE" code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.13"/>
-                  <!-- G.k.1: Characterisation of Drug Role -->
                   <subject2 typeCode="SUBJ">
                     <productUseReference classCode="SBADM" moodCode="EVN">
                       <id root="3c91b4d5-e039-4a7a-9c30-67671b0ef9e4"/>
@@ -432,20 +562,43 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                   </subject2>
                 </causalityAssessment>
               </component>
+              <!-- AMLODIPINE — role 2 (Concomitant) -->
+              <component typeCode="COMP">
+                <causalityAssessment classCode="OBS" moodCode="EVN">
+                  <code code="20" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                  <value xsi:type="CE" code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.13"/>
+                  <subject2 typeCode="SUBJ">
+                    <productUseReference classCode="SBADM" moodCode="EVN">
+                      <id root="b2c3d4e5-f6a7-8901-bcde-f12345678901"/>
+                    </productUseReference>
+                  </subject2>
+                </causalityAssessment>
+              </component>
+              <!-- LOSARTAN — role 2 (Concomitant) -->
+              <component typeCode="COMP">
+                <causalityAssessment classCode="OBS" moodCode="EVN">
+                  <code code="20" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
+                  <value xsi:type="CE" code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.13"/>
+                  <subject2 typeCode="SUBJ">
+                    <productUseReference classCode="SBADM" moodCode="EVN">
+                      <id root="c3d4e5f6-a7b8-9012-cdef-123456789012"/>
+                    </productUseReference>
+                  </subject2>
+                </causalityAssessment>
+              </component>
+
+              <!-- G.k.9.i.2: Causality assessment by reporter -->
               <component typeCode="COMP">
                 <causalityAssessment classCode="OBS" moodCode="EVN">
                   <code code="39" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
                   <value xsi:type="ST">RELATED</value>
-                  <!-- G.k.9.i.2.r.3: Result of Assessment -->
                   <methodCode>
                     <originalText>GLOBAL INTROSPECTION</originalText>
-                    <!-- G.k.9.i.2.r.2: Method of Assessment -->
                   </methodCode>
                   <author typeCode="AUT">
                     <assignedEntity classCode="ASSIGNED">
                       <code>
                         <originalText>REPORTER</originalText>
-                        <!-- G.k.9.i.2.r.1: Source of Assessment -->
                       </code>
                     </assignedEntity>
                   </author>
@@ -461,11 +614,12 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                   </subject2>
                 </causalityAssessment>
               </component>
+
+              <!-- H.2: Reporter's Comments -->
               <component1 typeCode="COMP">
                 <observationEvent classCode="OBS" moodCode="EVN">
                   <code code="10" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-                  <value xsi:type="ED">Although the results of DLSTs were all negative, drug-induced pneumonia was most considered from the onset of interstitial pneumonia, the condition of the shadows and the clinical course.</value>
-                  <!-- H.2: Reporter's Comments -->
+                  <value xsi:type="ED">Although the results of DLSTs were all negative, drug-induced interstitial pneumonia was considered most likely based on the onset timing relative to MEVALOTIN initiation, the radiological pattern on chest CT, BAL lymphocytosis, and marked clinical improvement following drug withdrawal and corticosteroid therapy. The negative DLST results do not exclude drug causality in this case.</value>
                   <author typeCode="AUT">
                     <assignedEntity classCode="ASSIGNED">
                       <code code="3" codeSystem="2.16.840.1.113883.3.989.2.1.1.21"/>
@@ -473,11 +627,12 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                   </author>
                 </observationEvent>
               </component1>
+
+              <!-- H.4: Sender's Comments -->
               <component1 typeCode="COMP">
                 <observationEvent classCode="OBS" moodCode="EVN">
                   <code code="10" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-                  <value xsi:type="ED">This is a spontaneously received case reported by a literature that is categorized as serious due to inpatient hospitalization. Daiichi Sankyo's assessment of the causal relationship between interstitial pneumonia and Mevalotin is related.</value>
-                  <!-- H.4: Sender's Comments -->
+                  <value xsi:type="ED">This is a spontaneously received case reported via literature, categorized as serious due to inpatient hospitalisation and life-threatening nature. Daiichi Sankyo's assessment of the causal relationship between interstitial pneumonia and MEVALOTIN (pravastatin sodium) is RELATED. Concomitant use of AMLODIPINE and LOSARTAN POTASSIUM is noted; however, these agents are not considered causally related to the interstitial pneumonia based on available evidence.</value>
                   <author typeCode="AUT">
                     <assignedEntity classCode="ASSIGNED">
                       <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.21"/>
@@ -485,35 +640,26 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                   </author>
                 </observationEvent>
               </component1>
+
             </adverseEventAssessment>
           </component>
+
           <component typeCode="COMP">
             <observationEvent classCode="OBS" moodCode="EVN">
               <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
               <value xsi:type="BL" value="true"/>
-              <!-- C.1.6.1: Are Additional Documents Available? -->
+              <!-- C.1.6.1: Additional documents available -->
             </observationEvent>
           </component>
           <component typeCode="COMP">
             <observationEvent classCode="OBS" moodCode="EVN">
               <code code="23" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
               <value xsi:type="BL" value="true"/>
-              <!-- C.1.7: Does This Case Fulfill the Local Criteria for an Expedited Report? -->
+              <!-- C.1.7: Fulfils local criteria for expedited report -->
             </observationEvent>
           </component>
-          <component typeCode="COMP">
-            <observationEvent classCode="OBS" moodCode="EVN">
-              <code code="36" codeSystem="2.16.840.1.113883.3.989.2.1.1.19"/>
-              <value xsi:type="ED" language="JA">DLSTの結果は陰性であるが間質性肺炎の発症時期、陰影の性状、経過からも薬剤性肺炎が最も考えられる。原因薬剤は特定できていない。</value>
-              <!-- H.5.r.1a: Case Summary and Reporter's Comments Text -->
-              <!-- H.5.r.1b: Case Summary and Reporter's Comments Language -->
-              <author typeCode="AUT">
-                <assignedEntity classCode="ASSIGNED">
-                  <code code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.21"/>
-                </assignedEntity>
-              </author>
-            </observationEvent>
-          </component>
+
+          <!-- C.2: Primary Source (Reporter) -->
           <outboundRelationship typeCode="SPRT">
             <relatedInvestigation classCode="INVSTG" moodCode="EVN">
               <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.22"/>
@@ -522,7 +668,6 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                   <author typeCode="AUT">
                     <assignedEntity classCode="ASSIGNED">
                       <code code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.3"/>
-                      <!-- C.1.8.2: First Sender of This Case -->
                     </assignedEntity>
                   </author>
                 </controlActEvent>
@@ -531,7 +676,7 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
           </outboundRelationship>
           <outboundRelationship typeCode="SPRT">
             <priorityNumber value="1"/>
-            <!-- C.2.r.5: Primary Source for Regulatory Purposes -->
+            <!-- C.2.r.5: Primary source for regulatory purposes -->
             <relatedInvestigation classCode="INVSTG" moodCode="EVN">
               <code code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.22"/>
               <subjectOf2 typeCode="SUBJ">
@@ -540,39 +685,30 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
                     <assignedEntity classCode="ASSIGNED">
                       <addr>
                         <streetAddressLine>3-1-1 Maidashi, Higashi-ku</streetAddressLine>
-                        <!-- C.2.r.2.3: Reporter's Street -->
                         <city>Fukuoka</city>
-                        <!-- C.2.r.2.4: Reporter's City -->
                         <state>Fukuoka</state>
-                        <!-- C.2.r.2.5: Reporter's State or Province -->
                         <postalCode>812-8582</postalCode>
-                        <!-- C.2.r.2.6: Reporter's Postcode -->
                       </addr>
                       <assignedPerson classCode="PSN" determinerCode="INSTANCE">
                         <name>
                           <given>Kyoko</given>
-                          <!-- C.2.r.1.2: Reporter's Given Name -->
                           <family>Kudo</family>
-                          <!-- C.2.r.1.4: Reporter's Family Name -->
                         </name>
                         <asQualifiedEntity classCode="QUAL">
                           <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.6"/>
-                          <!-- C.2.r.4: Qualification -->
+                          <!-- C.2.r.4: Qualification — Physician (1) -->
                         </asQualifiedEntity>
                         <asLocatedEntity classCode="LOCE">
                           <location classCode="COUNTRY" determinerCode="INSTANCE">
                             <code code="JP" codeSystem="1.0.3166.1.2.2"/>
-                            <!-- C.2.r.3: Reporter's Country Code -->
                           </location>
                         </asLocatedEntity>
                       </assignedPerson>
                       <representedOrganization classCode="ORG" determinerCode="INSTANCE">
-                        <name>Respiratory</name>
-                        <!-- C.2.r.2.2: Reporter's Department -->
+                        <name>Department of Respiratory Medicine</name>
                         <assignedEntity classCode="ASSIGNED">
                           <representedOrganization classCode="ORG" determinerCode="INSTANCE">
-                            <name>Kyushu University</name>
-                            <!-- C.2.r.2.1: Reporter's Organisation -->
+                            <name>Kyushu University Hospital</name>
                           </representedOrganization>
                         </assignedEntity>
                       </representedOrganization>
@@ -582,49 +718,39 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
               </subjectOf2>
             </relatedInvestigation>
           </outboundRelationship>
+
+          <!-- C.3: Sender (Manufacturer) -->
           <subjectOf1 typeCode="SUBJ">
             <controlActEvent classCode="CACT" moodCode="EVN">
               <author typeCode="AUT">
                 <assignedEntity classCode="ASSIGNED">
                   <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.7"/>
-                  <!-- C.3.1: Sender Type -->
+                  <!-- C.3.1: Sender Type — Pharmaceutical Company (1) -->
                   <addr>
                     <streetAddressLine>3-5-1 Nihonbashi Honcho</streetAddressLine>
-                    <!-- C.3.4.1: Sender's Street Address -->
                     <city>Chuo-ku</city>
-                    <!-- C.3.4.2: Sender's City -->
                     <state>Tokyo</state>
-                    <!-- C.3.4.3: Sender's State or Province -->
                     <postalCode>103-8426</postalCode>
-                    <!-- C.3.4.4: Sender's Postcode -->
                   </addr>
-                  <telecom value="tel:8199999999"/>
-                  <!-- C.3.4.6: Sender's Telephone -->
-                  <telecom value="fax:8188888888"/>
-                  <!-- C.3.4.7: Sender's Fax -->
-                  <telecom value="mailto:xxxx@xxxx.co.jp"/>
-                  <!-- C.3.4.8: Sender's E-mail Address -->
+                  <telecom value="tel:+81-3-6225-1111"/>
+                  <telecom value="fax:+81-3-6225-1115"/>
+                  <telecom value="mailto:pharmacovigilance@daiichisankyo.co.jp"/>
                   <assignedPerson classCode="PSN" determinerCode="INSTANCE">
                     <name>
                       <given>Hanako</given>
-                      <!-- C.3.3.3: Sender's Given Name -->
                       <family>Yamada</family>
-                      <!-- C.3.3.5: Sender's Family Name -->
                     </name>
                     <asLocatedEntity classCode="LOCE">
                       <location classCode="COUNTRY" determinerCode="INSTANCE">
                         <code code="JP" codeSystem="1.0.3166.1.2.2"/>
-                        <!-- C.3.4.5: Sender's Country Code -->
                       </location>
                     </asLocatedEntity>
                   </assignedPerson>
                   <representedOrganization classCode="ORG" determinerCode="INSTANCE">
-                    <name>Pharmacovigilance</name>
-                    <!-- C.3.3.1: Sender's Department -->
+                    <name>Global Pharmacovigilance Department</name>
                     <assignedEntity classCode="ASSIGNED">
                       <representedOrganization classCode="ORG" determinerCode="INSTANCE">
                         <name>Daiichi Sankyo Company, Limited</name>
-                        <!-- C.3.2: Sender's Organisation -->
                       </representedOrganization>
                     </assignedEntity>
                   </representedOrganization>
@@ -632,35 +758,45 @@ The Japanese Respiratory Society, 47: p.316</bibliographicDesignationText>
               </author>
             </controlActEvent>
           </subjectOf1>
+
+          <!-- C.1.3: Type of Report — Spontaneous (1) -->
           <subjectOf2 typeCode="SUBJ">
             <investigationCharacteristic classCode="OBS" moodCode="EVN">
               <code code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.23"/>
               <value xsi:type="CE" code="1" codeSystem="2.16.840.1.113883.3.989.2.1.1.2"/>
-              <!-- C.1.3 Type of Report -->
             </investigationCharacteristic>
           </subjectOf2>
+
+          <!-- C.1.9.1: Other Case Identifiers — Source company name and case ID -->
           <subjectOf2 typeCode="SUBJ">
             <investigationCharacteristic classCode="OBS" moodCode="EVN">
               <code code="2" codeSystem="2.16.840.1.113883.3.989.2.1.1.23"/>
-              <value xsi:type="BL" nullFlavor="NI"/>
-              <!-- C.1.9.1 Other Case Identifiers in Previous Transmissions -->
+              <value xsi:type="CE">
+                <originalText>Daiichi Sankyo Company, Limited</originalText>
+                <!-- C.1.9.1.r.1: Source of the Case Identifier -->
+              </value>
+              <outboundRelationship2 typeCode="PERT">
+                <observation classCode="OBS" moodCode="EVN">
+                  <code code="5" codeSystem="2.16.840.1.113883.3.989.2.1.1.23"/>
+                  <value xsi:type="ST">DSJ-2009-98765</value>
+                  <!-- C.1.9.1.r.2: Case Identifier (MFR control number) -->
+                </observation>
+              </outboundRelationship2>
             </investigationCharacteristic>
           </subjectOf2>
+
         </investigationEvent>
       </subject>
     </controlActProcess>
   </PORR_IN049016UV>
-  <!-- Message #1 -->
   <receiver typeCode="RCV">
     <device classCode="DEV" determinerCode="INSTANCE">
       <id extension="ICHTEST" root="2.16.840.1.113883.3.989.2.1.3.14"/>
-      <!-- N.1.4: Batch Receiver Identifier -->
     </device>
   </receiver>
   <sender typeCode="SND">
     <device classCode="DEV" determinerCode="INSTANCE">
       <id extension="DSJP" root="2.16.840.1.113883.3.989.2.1.3.13"/>
-      <!-- N.1.3: Batch Sender Identifier -->
     </device>
   </sender>
 </MCCI_IN200100UV01>

@@ -139,10 +139,14 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
     dob_d, dob_m, dob_y = _parse_date(_sv(d.get('d_2_1_date_birth')))
 
     # Field 2a – Age
+    _UCUM_UNITS = {'a': 'year', 'mo': 'month', 'wk': 'week', 'd': 'day', 'h': 'hour'}
     age_n = _sv(d.get('d_2_2a_age_onset_reaction_num'))
     age_u = _sv(d.get('d_2_2b_age_onset_reaction_unit'))
-    age_u_name = _AGE_UNITS.get(age_u, age_u)
-    age = f"{age_n} {age_u_name}s" if age_n else 'UNK'
+    age_unit_name = _AGE_UNITS.get(age_u) or _UCUM_UNITS.get(age_u, '')
+    if age_n:
+        age = age_n if not age_unit_name or age_unit_name == 'year' else f"{age_n} {age_unit_name}s"
+    else:
+        age = 'UNK'
 
     # Field 3 – Sex
     sex = {'1': 'M', '2': 'F'}.get(_sv(d.get('d_5_sex')), '')
@@ -163,7 +167,7 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
             v = r.get(f)
             if isinstance(v, dict):
                 v = v.get('_value', '')
-            return str(v or '') == '1'
+            return str(v or '').lower() in ('1', 'true')
 
         patient_died |= _b('e_i_3_2a_results_death')
         hosp         |= _b('e_i_3_2c_caused_prolonged_hospitalisation')
@@ -174,7 +178,7 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
 
         native_lang = _sv(r.get('e_i_1_1b_reaction_primary_source_language'))
         native_txt  = _sv(r.get('e_i_1_1a_reaction_primary_source_native_language'))
-        eng_txt     = _sv(r.get('e_i_1_2_reaction_meddra_llt_term'))
+        eng_txt     = _sv(r.get('e_i_1_2_reaction_primary_source_translation'))
 
         if native_txt:
             prefix = f"[{native_lang}] " if native_lang else ''
@@ -182,7 +186,7 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
         if eng_txt:
             describe_parts.append(f"[ENG] {eng_txt}")
 
-        outcome_code = _sv(r.get('e_i_7_outcome_reaction_last_point'))
+        outcome_code = _sv(r.get('e_i_7_outcome_reaction_last_observation'))
         if outcome_code:
             describe_parts.append(f"*{_OUTCOMES.get(outcome_code, outcome_code)}*")
 
@@ -236,7 +240,7 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
             })
 
         # Field 20 – abate after stopping?
-        outcome_code = _sv(r0.get('e_i_7_outcome_reaction_last_point'))
+        outcome_code = _sv(r0.get('e_i_7_outcome_reaction_last_observation'))
         if action in ('1', '2'):       # withdrawn or dose reduced
             if outcome_code in ('1', '2', '4'):
                 abate = 'Y'
@@ -317,10 +321,20 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
     hist = _sv(d.get('d_7_2_text_medical_history'))
     if not hist:
         mh_list = d.get('d_7_1_r_structured_information_medical_history') or []
-        codes = [_sv(m.get('d_7_1_r_1b_medical_history_meddra_code'))
-                 for m in mh_list
-                 if _sv(m.get('d_7_1_r_1b_medical_history_meddra_code'))]
-        hist = '; '.join(codes)
+        hist_parts = []
+        for m in mh_list:
+            code  = _sv(m.get('d_7_1_r_1b_medical_history_meddra_code'))
+            start = _fmt_date(_sv(m.get('d_7_1_r_2_start_date')))
+            cont  = _sv(m.get('d_7_1_r_3_continuing'))
+            if not code:
+                continue
+            entry = f'MedDRA {code}'
+            if start:
+                entry += f' (from {start})'
+            if cont == 'true':
+                entry += ', ongoing'
+            hist_parts.append(entry)
+        hist = '; '.join(hist_parts)
     history_full = hist or ''
 
     # Field 24a – manufacturer name/address
@@ -376,13 +390,13 @@ def _build_context(data: Dict[str, Any]) -> Dict[str, Any]:  # noqa: C901
 
     continuations: List[Tuple[str, str]] = []
     if r_ov:
-        continuations.append(('7 + 13 DESCRIBE REACTION(S) continued', reactions_full))
+        continuations.append(('7. DESCRIBE REACTION(S)', reactions_full))
     if c_ov:
-        continuations.append(('22. CONCOMITANT DRUG(S) AND DATES OF ADMINISTRATION continued', conco_full))
+        continuations.append(('22. CONCOMITANT DRUG(S) AND DATES OF ADMINISTRATION', conco_full))
     if h_ov:
-        continuations.append(('23. OTHER RELEVANT HISTORY continued', history_full))
+        continuations.append(('23. OTHER RELEVANT HISTORY', history_full))
     if m_ov:
-        continuations.append(('24a. NAME AND ADDRESS OF MANUFACTURER continued', mfr_full))
+        continuations.append(('24a. NAME AND ADDRESS OF MANUFACTURER', mfr_full))
 
     return {
         'initials':    initials,
@@ -681,7 +695,7 @@ def _render(ctx: Dict[str, Any]) -> str:  # noqa: C901
     .sex {{ grid-area: sex; }}
     .reaction_onset {{ grid-area: reaction_onset; }}
     .severity {{ grid-area: severity; }}
-    .describe_reaction {{ grid-area: describe_reaction; }}
+    .describe_reaction {{ grid-area: describe_reaction; overflow: hidden; }}
     .suspect_drug {{ grid-area: suspect_drug; }}
     .suspect_drug_1_name {{ grid-area: suspect_drug_1_name; }}
     .suspect_drug_1_daily_dose {{ grid-area: suspect_drug_1_daily_dose; }}
@@ -877,7 +891,7 @@ def _render(ctx: Dict[str, Any]) -> str:  # noqa: C901
 
     <div class="describe_reaction">
         <label for="describe_reaction">7 + 13 DESCRIBE REACTION(S) (including relevant tests/lab data)</label>
-        <textarea rows="13" id="describe_reaction" readonly>{_esc(ctx['reactions'])}</textarea>
+        <textarea rows="14" id="describe_reaction" readonly>{_esc(ctx['reactions'])}</textarea>
     </div>
 
     <div class="severity">
@@ -1014,12 +1028,7 @@ def _render(ctx: Dict[str, Any]) -> str:  # noqa: C901
 <!-- Continuation section -->
 <section class="layout_continue" style="{cont_display}">
     <div class="continue"><h2>CONTINUES PREVIOUS PAGE</h2></div>
-    <div style="border-top:0.05mm solid rgba(0,0,0,.5);">
-        <label style="font-weight:bold; padding:2px 4px; display:block;">
-            14-21 SUSPECT DRUG(S) INFORMATION continued
-        </label>
-        {cont_drugs}
-    </div>
+    {cont_drugs}
     {cont_text_blocks}
 </section>
 

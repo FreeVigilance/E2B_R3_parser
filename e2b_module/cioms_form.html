@@ -112,7 +112,7 @@
     .sex { grid-area: sex; }
     .reaction_onset { grid-area: reaction_onset; }
     .severity { grid-area: severity; }
-    .describe_reaction { grid-area: describe_reaction; }
+    .describe_reaction { grid-area: describe_reaction; overflow: hidden; }
     .suspect_drug { grid-area: suspect_drug; }
     .suspect_drug_1_name { grid-area: suspect_drug_1_name; }
     .suspect_drug_1_daily_dose { grid-area: suspect_drug_1_daily_dose; }
@@ -279,7 +279,7 @@
     </div>
     <div class="age">
         <label for="age">2a. AGE</label>
-        <input type="text" id="age" value="81 as" readonly>
+        <input type="text" id="age" value="81" readonly>
     </div>
     <div class="sex">
         <label for="sex">3. SEX</label>
@@ -308,12 +308,13 @@
 
     <div class="describe_reaction">
         <label for="describe_reaction">7 + 13 DESCRIBE REACTION(S) (including relevant tests/lab data)</label>
-        <textarea rows="13" id="describe_reaction" readonly>[JA] 間質性肺炎
+        <textarea rows="14" id="describe_reaction" readonly>[JA] 間質性肺炎
+[ENG] INTERSTITIAL PNEUMONIA
+*Recovered/Resolved*
 
-Case Narrative: An 81-year-old female patient received Mevalotin (pravastatin sodium) 20mg  for hyperlipidemia since July 2008. The patient experienced interstitial pneumonia on 08 October 2008 (inpatient hospitalization).
+Case Narrative: An 81-year-old Japanese female patient (T.O.) with a medical history of hyperlipidaemia (since 2003), hypertension (since 2006), and type 2 diabetes mellitus (since 2003, diet-controlled) was receiving MEVALOTIN (pravastatin sodium) 20 mg once daily by oral route since July 2008 for the management of hyperlipidaemia. Concomitant medications at the time of the event included AMLODIPINE 5 mg once daily (for hypertension, commenced January 2008) and LOSARTAN POTASSIUM 50 mg once daily (commenced March 2008).
 
-Relevant tests/lab data:
-MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
+On 09 October 2008, approximately 15 months after initiation of MEVALOTIN therapy, the patient developed acute-onset dyspnoea, dry cough, and low-grade fever (37.8 degrees C). She was admitted to hospital and chest computed tomography (CT) revealed bilateral ground-glass opacities with sub-pleural consolidati (Cont...)</textarea>
     </div>
 
     <div class="severity">
@@ -324,7 +325,7 @@ MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
                 PATIENT DIED
             </label>
             <label for="severity_hospitalization">
-                <input type="checkbox" id="severity_hospitalization" disabled>
+                <input type="checkbox" id="severity_hospitalization" checked disabled>
                 INVOLVED OR PROLONGED PATIENT HOSPITALISATION
             </label>
             <label for="severity_disability">
@@ -332,7 +333,7 @@ MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
                 INVOLVED PERSISTENT OR SIGNIFICANT DISABILITY OR INCAPACITY
             </label>
             <label for="severity_life_threatening">
-                <input type="checkbox" id="severity_life_threatening" disabled>
+                <input type="checkbox" id="severity_life_threatening" checked disabled>
                 LIFE THREATENING
             </label>
             <label for="severity_other">
@@ -400,19 +401,20 @@ MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
             22. CONCOMITANT DRUG(S) AND DATES OF ADMINISTRATION
             (exclude those used to treat reaction)
         </label>
-        <textarea rows="4" id="concomitant_drug_and_dates_of_administration" readonly></textarea>
+        <textarea rows="4" id="concomitant_drug_and_dates_of_administration" readonly>AMLODIPINE: 1 Jan 2008—9 Oct 2008
+LOSARTAN POTASSIUM: 15 Mar 2008—9 Oct 2008</textarea>
     </div>
     <div class="other_relevant_history">
         <label for="other_relevant_history">
             23. OTHER RELEVANT HISTORY (e.g. diagnostics, allergics, pregnancy with last month of period, etc.)
         </label>
-        <textarea rows="4" id="other_relevant_history" readonly>10020603</textarea>
+        <textarea rows="4" id="other_relevant_history" readonly>MedDRA 10020603 (from 1 Jan 2003), ongoing; MedDRA 10020772 (from 1 Jan 2006), ongoing; MedDRA 10067585 (from 1 Jun 2003), ongoing</textarea>
     </div>
 
     <div class="manufacturer"><h2>IV. MANUFACTURER INFORMATION</h2></div>
     <div class="name_and_address_of_manufacturer">
         <label for="name_and_address_of_manufacturer">24a. NAME AND ADDRESS OF MANUFACTURER</label>
-        <textarea rows="6" id="name_and_address_of_manufacturer" readonly>Daiichi Sankyo Company, Limited, Pharmacovigilance, Hanako, Yamada, 3-5-1 Nihonbashi Honcho, Chuo-ku, Tokyo, 103-8426, JP</textarea>
+        <textarea rows="6" id="name_and_address_of_manufacturer" readonly>Daiichi Sankyo Company, Limited, Global Pharmacovigilance Department, Hanako, Yamada, 3-5-1 Nihonbashi Honcho, Chuo-ku, Tokyo, 103-8426, JP</textarea>
     </div>
     <div class="text"><textarea></textarea></div>
     <div class="text2"><input type="text"></div>
@@ -422,7 +424,7 @@ MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
     </div>
     <div class="date_received_by_manufacturer">
         <label for="date_received_by_manufacturer">24c. DATE RECEIVED BY MANUFACTURER</label>
-        <input type="text" id="date_received_by_manufacturer" value="12 Apr 2010" readonly>
+        <input type="text" id="date_received_by_manufacturer" value="15 Oct 2010" readonly>
     </div>
     <div class="report_source">
         <label>24d. REPORT SOURCE</label>
@@ -448,15 +450,29 @@ MEVALOTIN(-), ALTAT(-), AMLODIN(-), BLOPRESS(-), LASIX (-)</textarea>
 </section>
 
 <!-- Continuation section -->
-<section class="layout_continue" style="display:none;">
+<section class="layout_continue" style="">
     <div class="continue"><h2>CONTINUES PREVIOUS PAGE</h2></div>
-    <div style="border-top:0.05mm solid rgba(0,0,0,.5);">
-        <label style="font-weight:bold; padding:2px 4px; display:block;">
-            14-21 SUSPECT DRUG(S) INFORMATION continued
-        </label>
-        
-    </div>
     
+    
+<div style="border-top:0.05mm solid rgba(0,0,0,.5); padding:2px 4px;">
+  <label style="font-weight:bold;">7. DESCRIBE REACTION(S)</label>
+  <div style="white-space:pre-wrap; font-size:10px;">[JA] 間質性肺炎
+[ENG] INTERSTITIAL PNEUMONIA
+*Recovered/Resolved*
+
+Case Narrative: An 81-year-old Japanese female patient (T.O.) with a medical history of hyperlipidaemia (since 2003), hypertension (since 2006), and type 2 diabetes mellitus (since 2003, diet-controlled) was receiving MEVALOTIN (pravastatin sodium) 20 mg once daily by oral route since July 2008 for the management of hyperlipidaemia. Concomitant medications at the time of the event included AMLODIPINE 5 mg once daily (for hypertension, commenced January 2008) and LOSARTAN POTASSIUM 50 mg once daily (commenced March 2008).
+
+On 09 October 2008, approximately 15 months after initiation of MEVALOTIN therapy, the patient developed acute-onset dyspnoea, dry cough, and low-grade fever (37.8 degrees C). She was admitted to hospital and chest computed tomography (CT) revealed bilateral ground-glass opacities with sub-pleural consolidation consistent with drug-induced interstitial pneumonia. Pulmonary function tests showed a restrictive pattern (FVC 62% predicted). Bronchoalveolar lavage (BAL) demonstrated lymphocytic alveolitis with a CD4/CD8 ratio of 0.9. Serum LDH was elevated at 412 U/L. Drug lymphocyte stimulation tests (DLST) were performed for MEVALOTIN, AMLODIPINE, LOSARTAN, and LASIX; all results were negative.
+
+MEVALOTIN was immediately discontinued upon hospitalisation. The patient was treated with systemic corticosteroids (prednisolone 40 mg/day, tapered over 8 weeks). Chest CT at 4-week follow-up demonstrated marked improvement in bilateral ground-glass opacities. The patient showed progressive clinical improvement and was discharged on 01 December 2008 after 54 days of inpatient hospitalisation.
+
+Based on the temporal association between MEVALOTIN initiation and onset of interstitial pneumonia, the radiological pattern, BAL findings, and clinical improvement following drug withdrawal and corticosteroid therapy, drug-induced interstitial pneumonia secondary to MEVALOTIN (pravastatin sodium) is considered the most likely diagnosis. Causality is assessed as related by the reporter.
+
+Relevant tests/lab data:
+MEVALOTIN(-), AMLODIPINE(-), LOSARTAN(-), LASIX(-)
+412 U/L (normal &lt;220 U/L) — elevated
+Lymphocytes 48%, CD4/CD8 ratio 0.9 — lymphocytic alveolitis pattern</div>
+</div>
 </section>
 
 <div class="button">
